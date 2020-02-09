@@ -1,3 +1,5 @@
+USE cmpt391; /*replace with your db name*/
+
 CREATE TABLE [Department] (
   [Department_ID] INT,
   [Head_Instructor_ID] INT,
