@@ -1,12 +1,3 @@
-- Software needed for project. make sure you have.
-
-- microsoft sql server 2017 or higher
-- SQL Server Management Studio
-- microsoft visual studios 2019
-
-- Create a database for project
-- Run SQL code to create tables
-
 CREATE TABLE [Department] (
   [Department_ID] INT,
   [Head_Instructor_ID] INT,
@@ -51,5 +42,3 @@ CREATE TABLE [Students] (
 );
 
 CREATE INDEX [FK] ON  [Students] ([Course_ID]);
-
-- Next we need to create fake data for our fake registration system
