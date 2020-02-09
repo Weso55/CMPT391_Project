@@ -52,3 +52,4 @@ CREATE TABLE [Students] (
 
 CREATE INDEX [FK] ON  [Students] ([Couse_ID]);
 
+- Next we need to create fake data for our fake registration system
