@@ -78,11 +78,29 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CMPT391DataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Form1.vb">
+    <Compile Include="Course_List.Designer.vb">
+      <DependentUpon>Course_List.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Course_List.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <Compile Include="Details.Designer.vb">
+      <DependentUpon>Details.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Details.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sign_in.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sign_in.Designer.vb">
+      <DependentUpon>Sign_in.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="enrolled.Designer.vb">
+      <DependentUpon>enrolled.vb</DependentUpon>
+    </Compile>
+    <Compile Include="enrolled.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -102,6 +120,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Course_List.resx">
+      <DependentUpon>Course_List.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Details.resx">
+      <DependentUpon>Details.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="enrolled.resx">
+      <DependentUpon>enrolled.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sign_in.resx">
+      <DependentUpon>Sign_in.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
