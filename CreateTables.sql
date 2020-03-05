@@ -86,7 +86,7 @@ CREATE TABLE [Courses] (
   [Instructor_ID] INT,
   [Section_ID] VARCHAR(10),
   [Semester] VARCHAR(50),
-  [Year] DATE,
+  [Year] INT,
   [Name] VARCHAR(50),
   [Capacity] INT,
   PRIMARY KEY ([Course_ID], [Section_ID], [Semester], [Year])
@@ -98,7 +98,7 @@ CREATE TABLE [Enrolled] (
   [Student_ID] INT,
   [Couse_ID] INT,
   [Semester] VARCHAR(50),
-  [Year] DATE,
+  [Year] INT,
   PRIMARY KEY ([Student_ID], [Couse_ID], [Semester], [Year])
 );
 
