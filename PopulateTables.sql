@@ -6,35 +6,127 @@ delete from Courses;
 delete from Instructors;
 delete from Students;
 
-/*generated using https://www.generatedata.com/ */
+/*generated using https://mockaroo.com/ */
 
 /*populate Department*/
 INSERT INTO Department([Department_ID],[Head_Instructor_ID],[Name]) 
-VALUES(1,1,'Anthropology'),(2,2,'Biological Sciences'),(3,3,'Computer Science'),
-	  (4,4,'Economics'),(5,5,'English'),(6,6,'Humanities'),
-	  (7,7,'Mathematics'),(8,8,'Physical Sciences'),(9,9,'Political Science'),
-	  (10,10,'Psychology'),(11,11,'Sociology');
+VALUES(1,16,'Anthropology'),(2,44,'Biological Sciences'),(3,18,'Computer Science'),
+	  (4,57,'Economics'),(5,83,'English'),(6,100,'Humanities'),
+	  (7,66,'Mathematics'),(8,3,'Physical Sciences'),(9,78,'Political Science'),
+	  (10,36,'Psychology'),(11,73,'Sociology');
 
 /*populate Courses*/
 
 
 /*populate Instructors*/
-INSERT INTO Instructors([Instructor_ID],[Department_ID],[Name],[Email]) VALUES(1,6,'Ashton Odom','lobortis.quis.pede@viverraDonectempus.ca'),(2,4,'Dennis Olsen','metus.Aenean.sed@semNulla.net'),(3,7,'Evelyn Madden','placerat.eget.venenatis@dolortempus.ca'),(4,4,'Keane Hicks','fermentum.risus.at@Sed.org'),(5,4,'Kylan Robbins','sem@rutrummagna.net'),(6,10,'Ingrid Webster','vitae@volutpatNullafacilisis.edu'),(7,6,'Ray Dickson','mi.pede@nequevitaesemper.co.uk'),(8,6,'Oren House','semper.egestas@Sed.ca'),(9,8,'Olga Ballard','amet.massa.Quisque@acorciUt.net'),(10,7,'Eugenia Shaffer','ante@eratnonummyultricies.co.uk'),(11,7,'Aladdin Hodge','urna@eratnonummyultricies.edu');
-INSERT INTO Instructors([Instructor_ID],[Department_ID],[Name],[Email]) VALUES(12,11,'Nicole Church','venenatis@Duissit.org'),(13,2,'Josiah Banks','tellus.Suspendisse@mattis.org'),(14,7,'Kane Quinn','sed@lobortisauguescelerisque.org'),(15,7,'Bruce Poole','Nunc@turpis.com'),(16,5,'Hasad Rivera','ac@semperduilectus.co.uk'),(17,2,'Shana Stout','faucibus.Morbi@Fuscedolor.net'),(18,10,'Haviva Watkins','interdum.libero.dui@ac.com'),(19,1,'Kevyn Lancaster','posuere.vulputate@orcilobortis.edu'),(20,11,'Ryder Donaldson','Curae@sitamet.com'),(21,8,'Ryder Small','eu@aliquet.co.uk'),(22,4,'Mollie Knowles','luctus.sit.amet@ipsumprimisin.co.uk');
-INSERT INTO Instructors([Instructor_ID],[Department_ID],[Name],[Email]) VALUES(23,6,'Kaseem Rodgers','sit@orcitinciduntadipiscing.co.uk'),(24,4,'Vivien Fletcher','elementum.purus.accumsan@Sed.ca'),(25,10,'Kadeem Lyons','penatibus@Fuscemi.org'),(26,4,'Belle Maddox','pellentesque@molestietortornibh.org'),(27,9,'Lydia England','lacus.vestibulum.lorem@Aliquam.ca'),(28,10,'Libby Cannon','Proin@nisiaodio.com'),(29,3,'Fatima Wood','dignissim.magna@egestas.co.uk'),(30,4,'Halee Rivera','eu.neque.pellentesque@quam.org'),(31,11,'Nicole Dudley','imperdiet.nec@odioNaminterdum.ca'),(32,1,'Lester Bolton','orci.Donec.nibh@elementumpurusaccumsan.edu'),(33,2,'Stephanie Rivera','auctor.velit@scelerisquescelerisquedui.org');
-INSERT INTO Instructors([Instructor_ID],[Department_ID],[Name],[Email]) VALUES(34,11,'Petra Bright','mi.felis@id.com'),(35,4,'Derek Whitaker','turpis@eueros.co.uk'),(36,11,'Solomon Donovan','suscipit.nonummy.Fusce@Cras.net'),(37,10,'Leandra Jackson','tincidunt.pede@parturient.co.uk'),(38,1,'Basia Park','dolor@lobortisClassaptent.net'),(39,8,'Veda Vance','eu@egestasnunc.co.uk'),(40,3,'Anastasia Rutledge','nec@nequeNullam.edu'),(41,10,'Benedict Velez','elit.pede.malesuada@Aliquamnisl.co.uk'),(42,8,'Melvin Erickson','bibendum@orciinconsequat.co.uk'),(43,6,'John Gallagher','elit.erat.vitae@anunc.edu'),(44,1,'Hammett Vaughn','Sed.eu@placerataugue.co.uk');
-INSERT INTO Instructors([Instructor_ID],[Department_ID],[Name],[Email]) VALUES(45,11,'Uma Sanders','nec@Aliquam.co.uk'),(46,9,'Samson Webb','Donec.tempus@risusa.edu'),(47,1,'Philip Lloyd','eu@a.com'),(48,11,'Zachary Drake','tempor.erat@eros.net'),(49,10,'Callum Guzman','pede@tortorNunc.edu'),(50,9,'Yuli Knapp','consequat.enim@sagittis.net'),(51,11,'Nigel Ramsey','In.at.pede@tellusidnunc.com'),(52,3,'Hanae Short','amet@sedsem.com'),(53,3,'Bryar Livingston','mi.fringilla@feugiat.edu'),(54,11,'Sybil Walters','porttitor.eros.nec@turpis.co.uk'),(55,3,'Ariel Larsen','in.dolor.Fusce@dolortempusnon.co.uk');
-INSERT INTO Instructors([Instructor_ID],[Department_ID],[Name],[Email]) VALUES(56,7,'George Mcintyre','tristique.pellentesque.tellus@eleifendnon.net'),(57,5,'Barrett Walton','Sed.congue@idnunc.edu'),(58,2,'Berk Dillon','velit@commodoauctor.org'),(59,4,'Zachary Ferguson','enim.Etiam@Morbiquisurna.ca'),(60,6,'Paula Fleming','convallis.erat.eget@nuncullamcorper.net'),(61,1,'Zorita Roy','et.euismod.et@ategestas.com'),(62,2,'Germaine Parsons','sit.amet@fringilla.org'),(63,8,'Devin Collins','bibendum@orciDonec.edu'),(64,2,'Renee Kim','eget.lacus@ullamcorperDuiscursus.ca'),(65,9,'Whoopi Foreman','ligula.Aenean@tellusjusto.org'),(66,3,'Alma Camacho','commodo.auctor.velit@elitsedconsequat.com');
-INSERT INTO Instructors([Instructor_ID],[Department_ID],[Name],[Email]) VALUES(67,9,'Emerald Rojas','ante@magnaaneque.co.uk'),(68,9,'Rogan Stuart','enim.Sed@hendreritnequeIn.co.uk'),(69,8,'Keith Norris','a.purus@risus.org'),(70,7,'Serena Small','at.libero.Morbi@ategestasa.com'),(71,2,'Germane Cotton','nunc@esttemporbibendum.edu'),(72,1,'Ralph Bailey','malesuada.id.erat@tellussem.edu'),(73,11,'Kenneth Travis','tristique@bibendum.org'),(74,8,'Daria Saunders','Nullam.velit@ametante.com'),(75,10,'Oren Sanford','sollicitudin.a.malesuada@sitametconsectetuer.edu'),(76,3,'Carly Rhodes','convallis@blanditenimconsequat.com'),(77,1,'Aline Hess','aliquet.nec@scelerisqueneque.com');
-INSERT INTO Instructors([Instructor_ID],[Department_ID],[Name],[Email]) VALUES(78,6,'Kylee Winters','ornare@Vivamussitamet.net'),(79,11,'Samantha Oneal','libero@placerategetvenenatis.org'),(80,11,'Indira Farrell','et@mattis.org'),(81,1,'Lars Fisher','arcu.iaculis@MaurismagnaDuis.ca'),(82,8,'Robin Prince','taciti@Sedeu.ca'),(83,11,'Hall Erickson','mus.Donec@nisi.net'),(84,2,'Bruce Reese','mauris.blandit.mattis@mi.edu'),(85,3,'Silas Thornton','ante.blandit@eleifendnunc.edu'),(86,9,'Ginger Stephenson','odio.Phasellus@magnatellusfaucibus.co.uk'),(87,9,'Whilemina Floyd','volutpat.Nulla.facilisis@nonquam.com'),(88,10,'Camille Salinas','pede@purusgravidasagittis.ca');
-INSERT INTO Instructors([Instructor_ID],[Department_ID],[Name],[Email]) VALUES(89,9,'Lev Juarez','In.at@felis.co.uk'),(90,2,'Raymond Alston','Cras@parturientmontesnascetur.edu'),(91,5,'Stephanie Calderon','Vestibulum.accumsan.neque@Integertincidunt.edu'),(92,11,'Tate Ryan','Sed@et.org'),(93,11,'Amena Wiley','Mauris@mattis.ca'),(94,2,'Shafira Becker','nisi.Aenean.eget@interdumenim.com'),(95,5,'Marshall Lynn','est@dapibusgravidaAliquam.ca'),(96,4,'Ciara Hurst','blandit.mattis@Aliquam.com'),(97,8,'Brooke Moss','mi.felis.adipiscing@vestibulumnec.edu'),(98,7,'Dana Charles','amet@Aeneaneget.co.uk'),(99,5,'Zenaida Wilder','pede@lectusa.co.uk');
-INSERT INTO Instructors([Instructor_ID],[Department_ID],[Name],[Email]) VALUES(100,5,'Kimberley Hanson','ac@elit.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (1, 4, 'Jonah de Quincey', 'QuinceyJ@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (2, 7, 'Nealy De Clairmont', 'ClairmontN@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (3, 8, 'Shelley Lebel', 'LebelS@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (4, 11, 'Regine Pietzner', 'PietznerR@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (5, 4, 'Katheryn Likely', 'LikelyK@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (6, 1, 'Imogen Duckit', 'DuckitI@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (7, 2, 'Willyt Hagland', 'HaglandW@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (8, 5, 'Brocky Tingly', 'TinglyB@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (9, 2, 'Lacie Petran', 'PetranL@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (10, 7, 'Keith Liddel', 'LiddelK@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (11, 11, 'Alex Borres', 'BorresA@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (12, 10, 'Mickey Siney', 'SineyM@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (13, 5, 'Veronike Frosch', 'FroschV@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (14, 5, 'Josepha Konertz', 'KonertzJ@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (15, 8, 'Pammy Andrivot', 'AndrivotP@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (16, 1, 'Wandie Llewellin', 'LlewellinW@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (17, 3, 'Vernice Woodard', 'WoodardV@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (18, 3, 'Kelcey Rablan', 'RablanK@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (19, 3, 'Eadie Fidoe', 'FidoeE@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (20, 10, 'Dniren Cosin', 'CosinD@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (21, 1, 'Candice Bruna', 'BrunaC@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (22, 7, 'Willy Whodcoat', 'WhodcoatW@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (23, 9, 'Prissie Marcome', 'MarcomeP@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (24, 10, 'Brandea Gwinnett', 'GwinnettB@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (25, 9, 'Pauline Lacasa', 'LacasaP@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (26, 4, 'Davis Howsam', 'HowsamD@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (27, 4, 'Burty Wathen', 'WathenB@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (28, 4, 'Dalenna Gambie', 'GambieD@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (29, 3, 'Kissee Eminson', 'EminsonK@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (30, 4, 'Ronnie Coverly', 'CoverlyR@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (31, 4, 'Jeannine Blasing', 'BlasingJ@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (32, 9, 'Letty Pusey', 'PuseyL@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (33, 2, 'Pippy Sidebotton', 'SidebottonP@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (34, 1, 'Yalonda Sowerbutts', 'SowerbuttsY@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (35, 1, 'Krisha Yukhnevich', 'YukhnevichK@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (36, 10, 'Elnora Pfeffer', 'PfefferE@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (37, 4, 'Ajay Klimpke', 'KlimpkeA@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (38, 2, 'Kari Flower', 'FlowerK@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (39, 7, 'Daryl Jurek', 'JurekD@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (40, 6, 'Sidney Collete', 'ColleteS@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (41, 6, 'Willow Ewell', 'EwellW@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (42, 6, 'Hatty Ayers', 'AyersH@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (43, 4, 'Phip Petrello', 'PetrelloP@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (44, 2, 'Nevil Dyne', 'DyneN@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (45, 10, 'Claribel Oldham', 'OldhamC@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (46, 4, 'Maryjane McPartlin', 'McPartlinM@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (47, 1, 'Basile Sollett', 'SollettB@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (48, 4, 'Matthiew Pettyfar', 'PettyfarM@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (49, 5, 'Tull Quinnette', 'QuinnetteT@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (50, 8, 'Umeko Westall', 'WestallU@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (51, 3, 'Donia Bloxsome', 'BloxsomeD@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (52, 4, 'Danika Luebbert', 'LuebbertD@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (53, 8, 'Reagen Gorner', 'GornerR@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (54, 8, 'Morgen Cragg', 'CraggM@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (55, 8, 'Edin Booker', 'BookerE@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (56, 11, 'Glenda Aked', 'AkedG@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (57, 4, 'Parry Ragat', 'RagatP@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (58, 10, 'Harold Garatty', 'GarattyH@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (59, 7, 'Vyky Olenchenko', 'OlenchenkoV@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (60, 11, 'Catrina Lysons', 'LysonsC@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (61, 7, 'Gusty Delooze', 'DeloozeG@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (62, 7, 'Cloris Booeln', 'BooelnC@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (63, 8, 'Raynor Figura', 'FiguraR@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (64, 4, 'Lolly Ranking', 'RankingL@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (65, 6, 'Karen Garthshore', 'GarthshoreK@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (66, 7, 'Kaitlyn Nethercott', 'NethercottK@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (67, 10, 'Jarred Vickery', 'VickeryJ@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (68, 8, 'Bunni Menco', 'MencoB@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (69, 11, 'Daisi By', 'ByD@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (70, 7, 'Alanna Rutigliano', 'RutiglianoA@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (71, 3, 'Iorgo Pladen', 'PladenI@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (72, 1, 'Benoit Kindleysides', 'KindleysidesB@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (73, 11, 'Brigid Shear', 'ShearB@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (74, 8, 'Agretha Eastway', 'EastwayA@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (75, 8, 'Lucilia Fernier', 'FernierL@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (76, 7, 'Dorine Kasher', 'KasherD@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (77, 7, 'Estell Vedeshkin', 'VedeshkinE@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (78, 9, 'Ephrem Baswall', 'BaswallE@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (79, 5, 'Minette Cathro', 'CathroM@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (80, 4, 'Elroy Hutchinson', 'HutchinsonE@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (81, 7, 'Joellyn Sanday', 'SandayJ@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (82, 5, 'Frederich Wyrall', 'WyrallF@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (83, 5, 'Daryle Inkpin', 'InkpinD@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (84, 9, 'Brunhilda Walters', 'WaltersB@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (85, 9, 'Winonah Ziemke', 'ZiemkeW@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (86, 7, 'Desmund Jacmar', 'JacmarD@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (87, 11, 'Elka Blenkinsop', 'BlenkinsopE@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (88, 10, 'Sal Prisley', 'PrisleyS@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (89, 5, 'Hillard Lavigne', 'LavigneH@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (90, 2, 'Brande Tomashov', 'TomashovB@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (91, 2, 'Justinian Quare', 'QuareJ@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (92, 1, 'La verne Zecchinelli', 'ZecchinelliL@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (93, 5, 'Hew Neames', 'NeamesH@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (94, 8, 'Gael Shillom', 'ShillomG@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (95, 8, 'Richie Rodolfi', 'RodolfiR@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (96, 8, 'Tierney Le Provest', 'ProvestT@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (97, 1, 'Doretta Wildbore', 'WildboreD@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (98, 1, 'Harley Scough', 'ScoughH@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (99, 11, 'Devin Axon', 'AxonD@macewan.ca');
+insert into Instructors (Instructor_ID, Department_ID, Name, Email) values (100, 6, 'Cyrill Creeboe', 'CreeboeC@macewan.ca');
+
+
 
 /*populate Students*/
 
 
 /*query all for testing purposes*/
-select * from Department;
-select * from Courses;
-select * from Instructors;
-select * from Students;
+--select * from Department;
+--select * from Courses;
+--select * from Instructors;
+--select * from Students;
