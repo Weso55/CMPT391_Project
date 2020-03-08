@@ -23,9 +23,9 @@ Partial Class Sign_in
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.SignIn = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'TextBox1
@@ -35,21 +35,14 @@ Partial Class Sign_in
         Me.TextBox1.Size = New System.Drawing.Size(508, 20)
         Me.TextBox1.TabIndex = 0
         '
-        'TextBox2
+        'SignIn
         '
-        Me.TextBox2.Location = New System.Drawing.Point(171, 184)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(508, 20)
-        Me.TextBox2.TabIndex = 1
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(513, 239)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(166, 50)
-        Me.Button1.TabIndex = 2
-        Me.Button1.Text = "Sign in"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.SignIn.Location = New System.Drawing.Point(513, 197)
+        Me.SignIn.Name = "SignIn"
+        Me.SignIn.Size = New System.Drawing.Size(166, 50)
+        Me.SignIn.TabIndex = 2
+        Me.SignIn.Text = "Sign in"
+        Me.SignIn.UseVisualStyleBackColor = True
         '
         'Label1
         '
@@ -60,16 +53,25 @@ Partial Class Sign_in
         Me.Label1.TabIndex = 3
         Me.Label1.Text = "Fake College Name"
         '
-        'Form1
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(115, 146)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(21, 13)
+        Me.Label2.TabIndex = 4
+        Me.Label2.Text = "ID:"
+        '
+        'Sign_in
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.SignIn)
         Me.Controls.Add(Me.TextBox1)
-        Me.Name = "Form1"
+        Me.Name = "Sign_in"
         Me.Text = "Form1"
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -77,7 +79,7 @@ Partial Class Sign_in
     End Sub
 
     Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents Button1 As Button
+    Friend WithEvents SignIn As Button
     Friend WithEvents Label1 As Label
+    Friend WithEvents Label2 As Label
 End Class
