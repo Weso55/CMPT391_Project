@@ -22,25 +22,26 @@ Partial Class Course_List
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.CourseTextBox = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.SectionTextBox = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.DepartmentComboBox = New System.Windows.Forms.ComboBox()
+        Me.SemesterComboBox = New System.Windows.Forms.ComboBox()
+        Me.CourseDataGridView = New System.Windows.Forms.DataGridView()
+        Me.SearchButton = New System.Windows.Forms.Button()
+        CType(Me.CourseDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'TextBox1
+        'CourseTextBox
         '
-        Me.TextBox1.Location = New System.Drawing.Point(12, 82)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(276, 20)
-        Me.TextBox1.TabIndex = 0
+        Me.CourseTextBox.Location = New System.Drawing.Point(12, 82)
+        Me.CourseTextBox.Name = "CourseTextBox"
+        Me.CourseTextBox.Size = New System.Drawing.Size(276, 20)
+        Me.CourseTextBox.TabIndex = 0
         '
         'Label1
         '
@@ -56,9 +57,9 @@ Partial Class Course_List
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(9, 60)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(45, 13)
+        Me.Label2.Size = New System.Drawing.Size(71, 13)
         Me.Label2.TabIndex = 2
-        Me.Label2.Text = "Courses"
+        Me.Label2.Text = "Course Name"
         '
         'Label3
         '
@@ -78,12 +79,12 @@ Partial Class Course_List
         Me.Label5.TabIndex = 5
         Me.Label5.Text = "Semester"
         '
-        'TextBox2
+        'SectionTextBox
         '
-        Me.TextBox2.Location = New System.Drawing.Point(475, 82)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(250, 20)
-        Me.TextBox2.TabIndex = 6
+        Me.SectionTextBox.Location = New System.Drawing.Point(475, 82)
+        Me.SectionTextBox.Name = "SectionTextBox"
+        Me.SectionTextBox.Size = New System.Drawing.Size(250, 20)
+        Me.SectionTextBox.TabIndex = 6
         '
         'Label4
         '
@@ -94,61 +95,82 @@ Partial Class Course_List
         Me.Label4.TabIndex = 7
         Me.Label4.Text = "Department"
         '
-        'ComboBox1
+        'DepartmentComboBox
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(913, 82)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(166, 21)
-        Me.ComboBox1.TabIndex = 8
+        Me.DepartmentComboBox.FormattingEnabled = True
+        Me.DepartmentComboBox.Items.AddRange(New Object() {"1", "2"})
+        Me.DepartmentComboBox.Location = New System.Drawing.Point(913, 82)
+        Me.DepartmentComboBox.Name = "DepartmentComboBox"
+        Me.DepartmentComboBox.Size = New System.Drawing.Size(166, 21)
+        Me.DepartmentComboBox.TabIndex = 8
         '
-        'ComboBox2
+        'SemesterComboBox
         '
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(913, 147)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(166, 21)
-        Me.ComboBox2.TabIndex = 9
+        Me.SemesterComboBox.AutoCompleteCustomSource.AddRange(New String() {"Fall", "Summer", "Winter", "Spring"})
+        Me.SemesterComboBox.FormattingEnabled = True
+        Me.SemesterComboBox.Items.AddRange(New Object() {"Fall", "Winter", "Summer", "Spring"})
+        Me.SemesterComboBox.Location = New System.Drawing.Point(913, 147)
+        Me.SemesterComboBox.Name = "SemesterComboBox"
+        Me.SemesterComboBox.Size = New System.Drawing.Size(166, 21)
+        Me.SemesterComboBox.TabIndex = 9
         '
-        'DataGridView1
+        'CourseDataGridView
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(12, 219)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(1067, 473)
-        Me.DataGridView1.TabIndex = 10
+        Me.CourseDataGridView.AllowUserToAddRows = False
+        Me.CourseDataGridView.AllowUserToDeleteRows = False
+        Me.CourseDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
+        Me.CourseDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
+        Me.CourseDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.CourseDataGridView.Location = New System.Drawing.Point(12, 219)
+        Me.CourseDataGridView.MultiSelect = False
+        Me.CourseDataGridView.Name = "CourseDataGridView"
+        Me.CourseDataGridView.RowTemplate.ReadOnly = True
+        Me.CourseDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.CourseDataGridView.Size = New System.Drawing.Size(1067, 473)
+        Me.CourseDataGridView.TabIndex = 10
+        '
+        'SearchButton
+        '
+        Me.SearchButton.Location = New System.Drawing.Point(12, 145)
+        Me.SearchButton.Name = "SearchButton"
+        Me.SearchButton.Size = New System.Drawing.Size(108, 39)
+        Me.SearchButton.TabIndex = 11
+        Me.SearchButton.Text = "Search"
+        Me.SearchButton.UseVisualStyleBackColor = True
         '
         'Course_List
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1165, 831)
-        Me.Controls.Add(Me.DataGridView1)
-        Me.Controls.Add(Me.ComboBox2)
-        Me.Controls.Add(Me.ComboBox1)
+        Me.Controls.Add(Me.SearchButton)
+        Me.Controls.Add(Me.CourseDataGridView)
+        Me.Controls.Add(Me.SemesterComboBox)
+        Me.Controls.Add(Me.DepartmentComboBox)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.SectionTextBox)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.CourseTextBox)
         Me.Name = "Course_List"
         Me.Text = "Course_List"
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CourseDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents CourseTextBox As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label5 As Label
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents SectionTextBox As TextBox
     Friend WithEvents Label4 As Label
-    Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents ComboBox2 As ComboBox
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents DepartmentComboBox As ComboBox
+    Friend WithEvents SemesterComboBox As ComboBox
+    Friend WithEvents CourseDataGridView As DataGridView
+    Friend WithEvents SearchButton As Button
 End Class

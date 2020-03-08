@@ -28,6 +28,7 @@ Public Class enrolled
     Private Sub ViewCourses_Click(sender As Object, e As EventArgs) Handles ViewCourses.Click
         Dim form As New Course_List
         Me.Hide()
+        form.startup(user_id)
         form.ShowDialog()
         Me.Close()
     End Sub
@@ -57,7 +58,6 @@ Public Class enrolled
         'fill table with enrolled details'
         adpt.Fill(dt)
         EnrollData.DataSource = dt
-        MsgBox("no error")
     End Sub
 
 End Class
