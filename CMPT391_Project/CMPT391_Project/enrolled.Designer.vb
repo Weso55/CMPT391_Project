@@ -25,14 +25,15 @@ Partial Class enrolled
         Me.components = New System.ComponentModel.Container()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.CMPT391DataSet = New CMPT391_Project.CMPT391DataSet()
+        Me.SemComboBox = New System.Windows.Forms.ComboBox()
         Me.CMPT391DataSetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        CType(Me.CMPT391DataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ViewCourses = New System.Windows.Forms.Button()
+        Me.EnrollData = New System.Windows.Forms.DataGridView()
+        Me.RefreshButton = New System.Windows.Forms.Button()
+        Me.YearLabel = New System.Windows.Forms.Label()
+        Me.YearComboBox = New System.Windows.Forms.ComboBox()
         CType(Me.CMPT391DataSetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EnrollData, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -53,56 +54,76 @@ Partial Class enrolled
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Semester"
         '
-        'ComboBox1
+        'SemComboBox
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(73, 55)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox1.TabIndex = 2
+        Me.SemComboBox.FormattingEnabled = True
+        Me.SemComboBox.Items.AddRange(New Object() {"Winter", "Fall", "Spring", "Summer"})
+        Me.SemComboBox.Location = New System.Drawing.Point(73, 55)
+        Me.SemComboBox.Name = "SemComboBox"
+        Me.SemComboBox.Size = New System.Drawing.Size(121, 21)
+        Me.SemComboBox.TabIndex = 2
         '
-        'CMPT391DataSet
+        'ViewCourses
         '
-        Me.CMPT391DataSet.DataSetName = "CMPT391DataSet"
-        Me.CMPT391DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.ViewCourses.Location = New System.Drawing.Point(517, 326)
+        Me.ViewCourses.Name = "ViewCourses"
+        Me.ViewCourses.Size = New System.Drawing.Size(171, 44)
+        Me.ViewCourses.TabIndex = 3
+        Me.ViewCourses.Text = "View Courses"
+        Me.ViewCourses.UseVisualStyleBackColor = True
         '
-        'CMPT391DataSetBindingSource
+        'EnrollData
         '
-        Me.CMPT391DataSetBindingSource.DataSource = Me.CMPT391DataSet
-        Me.CMPT391DataSetBindingSource.Position = 0
+        Me.EnrollData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.EnrollData.Location = New System.Drawing.Point(73, 93)
+        Me.EnrollData.Name = "EnrollData"
+        Me.EnrollData.Size = New System.Drawing.Size(615, 201)
+        Me.EnrollData.TabIndex = 4
         '
-        'Button1
+        'RefreshButton
         '
-        Me.Button1.Location = New System.Drawing.Point(517, 326)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(171, 44)
-        Me.Button1.TabIndex = 3
-        Me.Button1.Text = "View Courses"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.RefreshButton.Location = New System.Drawing.Point(555, 39)
+        Me.RefreshButton.Name = "RefreshButton"
+        Me.RefreshButton.Size = New System.Drawing.Size(133, 37)
+        Me.RefreshButton.TabIndex = 5
+        Me.RefreshButton.Text = "Refresh"
+        Me.RefreshButton.UseVisualStyleBackColor = True
         '
-        'DataGridView1
+        'YearLabel
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(73, 93)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(615, 201)
-        Me.DataGridView1.TabIndex = 4
+        Me.YearLabel.AutoSize = True
+        Me.YearLabel.Location = New System.Drawing.Point(305, 39)
+        Me.YearLabel.Name = "YearLabel"
+        Me.YearLabel.Size = New System.Drawing.Size(29, 13)
+        Me.YearLabel.TabIndex = 6
+        Me.YearLabel.Text = "Year"
+        '
+        'YearComboBox
+        '
+        Me.YearComboBox.FormattingEnabled = True
+        Me.YearComboBox.Items.AddRange(New Object() {"2015", "2016", "2017", "2018", "2019", "2020"})
+        Me.YearComboBox.Location = New System.Drawing.Point(308, 56)
+        Me.YearComboBox.Name = "YearComboBox"
+        Me.YearComboBox.Size = New System.Drawing.Size(121, 21)
+        Me.YearComboBox.TabIndex = 7
         '
         'enrolled
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Controls.Add(Me.DataGridView1)
-        Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.ComboBox1)
+        Me.Controls.Add(Me.YearComboBox)
+        Me.Controls.Add(Me.YearLabel)
+        Me.Controls.Add(Me.RefreshButton)
+        Me.Controls.Add(Me.EnrollData)
+        Me.Controls.Add(Me.ViewCourses)
+        Me.Controls.Add(Me.SemComboBox)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Name = "enrolled"
         Me.Text = "Form2"
-        CType(Me.CMPT391DataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CMPT391DataSetBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EnrollData, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -110,9 +131,12 @@ Partial Class enrolled
 
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
-    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents SemComboBox As ComboBox
     Friend WithEvents CMPT391DataSet As CMPT391DataSet
     Friend WithEvents CMPT391DataSetBindingSource As BindingSource
-    Friend WithEvents Button1 As Button
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents ViewCourses As Button
+    Friend WithEvents EnrollData As DataGridView
+    Friend WithEvents RefreshButton As Button
+    Friend WithEvents YearLabel As Label
+    Friend WithEvents YearComboBox As ComboBox
 End Class
