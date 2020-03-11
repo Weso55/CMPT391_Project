@@ -24,18 +24,18 @@ Partial Class Details
     Private Sub InitializeComponent()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
+        Me.CourseNameLabel = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
+        Me.SectionLabel = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
+        Me.InstructorLabel = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
+        Me.StatusLabel = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
-        Me.Label12 = New System.Windows.Forms.Label()
+        Me.PrereqLabel = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.DepartmentLabel = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Label1
@@ -56,14 +56,14 @@ Partial Class Details
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Course Name:"
         '
-        'Label3
+        'CourseNameLabel
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(132, 65)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(39, 13)
-        Me.Label3.TabIndex = 2
-        Me.Label3.Text = "Label3"
+        Me.CourseNameLabel.AutoSize = True
+        Me.CourseNameLabel.Location = New System.Drawing.Point(132, 65)
+        Me.CourseNameLabel.Name = "CourseNameLabel"
+        Me.CourseNameLabel.Size = New System.Drawing.Size(39, 13)
+        Me.CourseNameLabel.TabIndex = 2
+        Me.CourseNameLabel.Text = "Label3"
         '
         'Label4
         '
@@ -74,14 +74,14 @@ Partial Class Details
         Me.Label4.TabIndex = 3
         Me.Label4.Text = "Section ID:"
         '
-        'Label5
+        'SectionLabel
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(132, 123)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(39, 13)
-        Me.Label5.TabIndex = 4
-        Me.Label5.Text = "Label5"
+        Me.SectionLabel.AutoSize = True
+        Me.SectionLabel.Location = New System.Drawing.Point(132, 123)
+        Me.SectionLabel.Name = "SectionLabel"
+        Me.SectionLabel.Size = New System.Drawing.Size(39, 13)
+        Me.SectionLabel.TabIndex = 4
+        Me.SectionLabel.Text = "Label5"
         '
         'Label6
         '
@@ -92,49 +92,32 @@ Partial Class Details
         Me.Label6.TabIndex = 5
         Me.Label6.Text = "Instructor:"
         '
-        'Label7
+        'InstructorLabel
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(132, 185)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(39, 13)
-        Me.Label7.TabIndex = 6
-        Me.Label7.Text = "Label7"
+        Me.InstructorLabel.AutoSize = True
+        Me.InstructorLabel.Location = New System.Drawing.Point(132, 185)
+        Me.InstructorLabel.Name = "InstructorLabel"
+        Me.InstructorLabel.Size = New System.Drawing.Size(39, 13)
+        Me.InstructorLabel.TabIndex = 6
+        Me.InstructorLabel.Text = "Label7"
         '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(38, 240)
+        Me.Label8.Location = New System.Drawing.Point(38, 274)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(40, 13)
         Me.Label8.TabIndex = 7
         Me.Label8.Text = "Status:"
         '
-        'Label9
+        'StatusLabel
         '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(135, 240)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(39, 13)
-        Me.Label9.TabIndex = 8
-        Me.Label9.Text = "Label9"
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(38, 321)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(63, 13)
-        Me.Label10.TabIndex = 9
-        Me.Label10.Text = "Description:"
-        '
-        'RichTextBox1
-        '
-        Me.RichTextBox1.Location = New System.Drawing.Point(38, 354)
-        Me.RichTextBox1.Name = "RichTextBox1"
-        Me.RichTextBox1.Size = New System.Drawing.Size(660, 237)
-        Me.RichTextBox1.TabIndex = 10
-        Me.RichTextBox1.Text = ""
+        Me.StatusLabel.AutoSize = True
+        Me.StatusLabel.Location = New System.Drawing.Point(132, 274)
+        Me.StatusLabel.Name = "StatusLabel"
+        Me.StatusLabel.Size = New System.Drawing.Size(39, 13)
+        Me.StatusLabel.TabIndex = 8
+        Me.StatusLabel.Text = "Label9"
         '
         'Label11
         '
@@ -145,14 +128,14 @@ Partial Class Details
         Me.Label11.TabIndex = 11
         Me.Label11.Text = "Prereq(s)"
         '
-        'Label12
+        'PrereqLabel
         '
-        Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(135, 615)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(45, 13)
-        Me.Label12.TabIndex = 12
-        Me.Label12.Text = "Label12"
+        Me.PrereqLabel.AutoSize = True
+        Me.PrereqLabel.Location = New System.Drawing.Point(135, 615)
+        Me.PrereqLabel.Name = "PrereqLabel"
+        Me.PrereqLabel.Size = New System.Drawing.Size(45, 13)
+        Me.PrereqLabel.TabIndex = 12
+        Me.PrereqLabel.Text = "Label12"
         '
         'Button1
         '
@@ -163,23 +146,41 @@ Partial Class Details
         Me.Button1.Text = "Enroll"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(38, 225)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(68, 13)
+        Me.Label13.TabIndex = 14
+        Me.Label13.Text = "Department: "
+        '
+        'DepartmentLabel
+        '
+        Me.DepartmentLabel.AutoSize = True
+        Me.DepartmentLabel.Location = New System.Drawing.Point(132, 225)
+        Me.DepartmentLabel.Name = "DepartmentLabel"
+        Me.DepartmentLabel.Size = New System.Drawing.Size(45, 13)
+        Me.DepartmentLabel.TabIndex = 15
+        Me.DepartmentLabel.Text = "Label14"
+        '
         'Details
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(841, 737)
+        Me.Controls.Add(Me.DepartmentLabel)
+        Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.Label12)
+        Me.Controls.Add(Me.PrereqLabel)
         Me.Controls.Add(Me.Label11)
-        Me.Controls.Add(Me.RichTextBox1)
-        Me.Controls.Add(Me.Label10)
-        Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.StatusLabel)
         Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.InstructorLabel)
         Me.Controls.Add(Me.Label6)
-        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.SectionLabel)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.CourseNameLabel)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Name = "Details"
@@ -191,16 +192,16 @@ Partial Class Details
 
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
-    Friend WithEvents Label3 As Label
+    Friend WithEvents CourseNameLabel As Label
     Friend WithEvents Label4 As Label
-    Friend WithEvents Label5 As Label
+    Friend WithEvents SectionLabel As Label
     Friend WithEvents Label6 As Label
-    Friend WithEvents Label7 As Label
+    Friend WithEvents InstructorLabel As Label
     Friend WithEvents Label8 As Label
-    Friend WithEvents Label9 As Label
-    Friend WithEvents Label10 As Label
-    Friend WithEvents RichTextBox1 As RichTextBox
+    Friend WithEvents StatusLabel As Label
     Friend WithEvents Label11 As Label
-    Friend WithEvents Label12 As Label
+    Friend WithEvents PrereqLabel As Label
     Friend WithEvents Button1 As Button
+    Friend WithEvents Label13 As Label
+    Friend WithEvents DepartmentLabel As Label
 End Class

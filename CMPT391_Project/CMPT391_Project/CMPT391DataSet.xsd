@@ -377,6 +377,27 @@ SELECT Student_ID, Name, Email FROM Students WHERE (Student_ID = @Student_ID)</C
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="detailTableAdapter" GeneratorDataComponentClassName="detailTableAdapter" Name="detail" UserDataComponentName="detailTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="CMPT391ConnectionString (MySettings)" DbObjectName="CMPT391.dbo.detail" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Class_ID, C_Name, S_ID, I_name, D_name, cap FROM dbo.detail</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Class_ID" DataSetColumn="Class_ID" />
+              <Mapping SourceColumn="C_Name" DataSetColumn="C_Name" />
+              <Mapping SourceColumn="S_ID" DataSetColumn="S_ID" />
+              <Mapping SourceColumn="I_name" DataSetColumn="I_name" />
+              <Mapping SourceColumn="D_name" DataSetColumn="D_name" />
+              <Mapping SourceColumn="cap" DataSetColumn="cap" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -496,6 +517,42 @@ SELECT Student_ID, Name, Email FROM Students WHERE (Student_ID = @Student_ID)</C
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="detail" msprop:Generator_TableClassName="detailDataTable" msprop:Generator_TableVarName="tabledetail" msprop:Generator_TablePropName="detail" msprop:Generator_RowDeletingName="detailRowDeleting" msprop:Generator_RowChangingName="detailRowChanging" msprop:Generator_RowEvHandlerName="detailRowChangeEventHandler" msprop:Generator_RowDeletedName="detailRowDeleted" msprop:Generator_UserTableName="detail" msprop:Generator_RowChangedName="detailRowChanged" msprop:Generator_RowEvArgName="detailRowChangeEvent" msprop:Generator_RowClassName="detailRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Class_ID" msprop:Generator_ColumnVarNameInTable="columnClass_ID" msprop:Generator_ColumnPropNameInRow="Class_ID" msprop:Generator_ColumnPropNameInTable="Class_IDColumn" msprop:Generator_UserColumnName="Class_ID" type="xs:int" />
+              <xs:element name="C_Name" msprop:Generator_ColumnVarNameInTable="columnC_Name" msprop:Generator_ColumnPropNameInRow="C_Name" msprop:Generator_ColumnPropNameInTable="C_NameColumn" msprop:Generator_UserColumnName="C_Name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="S_ID" msprop:Generator_ColumnVarNameInTable="columnS_ID" msprop:Generator_ColumnPropNameInRow="S_ID" msprop:Generator_ColumnPropNameInTable="S_IDColumn" msprop:Generator_UserColumnName="S_ID">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="I_name" msprop:Generator_ColumnVarNameInTable="columnI_name" msprop:Generator_ColumnPropNameInRow="I_name" msprop:Generator_ColumnPropNameInTable="I_nameColumn" msprop:Generator_UserColumnName="I_name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="D_name" msprop:Generator_ColumnVarNameInTable="columnD_name" msprop:Generator_ColumnPropNameInRow="D_name" msprop:Generator_ColumnPropNameInTable="D_nameColumn" msprop:Generator_UserColumnName="D_name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cap" msprop:Generator_ColumnVarNameInTable="columncap" msprop:Generator_ColumnPropNameInRow="cap" msprop:Generator_ColumnPropNameInTable="capColumn" msprop:Generator_UserColumnName="cap" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
