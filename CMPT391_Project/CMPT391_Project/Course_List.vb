@@ -6,11 +6,13 @@ Public Class Course_List
     Private con As SqlConnection
     Private cmd As SqlCommand
     Private adpt As SqlDataAdapter
+    Private con_string As String
 
     ' run startup in previous form before showing form to preload datagrid
-    Public Sub startup(id As Integer)
+    Public Sub startup(id As Integer, con_s As String)
         user_id = id
-        con = New SqlConnection("Data Source=DESKTOP-IRRDDVT\SQLEXPRESS;Initial Catalog=CMPT391;Integrated Security=True")
+        con_string = con_s
+        con = New SqlConnection(con_string)
         adpt = New SqlDataAdapter("Select * from Courses", con)
         'fill table with course details'
         Dim dt As DataTable = New DataTable
@@ -71,7 +73,7 @@ Public Class Course_List
             End If
         End If
 
-        con = New SqlConnection("Data Source=DESKTOP-IRRDDVT\SQLEXPRESS;Initial Catalog=CMPT391;Integrated Security=True")
+        con = New SqlConnection(con_string)
         If flag = 0 Then
             adpt = New SqlDataAdapter("Select * from Courses", con)
         Else
@@ -99,7 +101,7 @@ Public Class Course_List
         Dim form As New Details
         Me.Hide()
         'pass user_id and course_id (selected course to next form)'
-        form.startup(user_id, course_id)
+        form.startup(user_id, course_id, con_string)
         form.ShowDialog()
         Me.Close()
     End Sub

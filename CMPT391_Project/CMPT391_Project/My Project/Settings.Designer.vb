@@ -64,6 +64,17 @@ Namespace My
                 Return CType(Me("CMPT391ConnectionString"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=LAPTOP-I5S445IL\SQLEXPRESS;Initial Catalog=CMPT391;Integrated Securit"& _ 
+            "y=True")>  _
+        Public ReadOnly Property CMPT391ConnectionString1() As String
+            Get
+                Return CType(Me("CMPT391ConnectionString1"),String)
+            End Get
+        End Property
     End Class
 End Namespace
 

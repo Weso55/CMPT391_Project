@@ -1,9 +1,9 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class Sign_in
-
+    Private con_string As String
     Private Sub SignIn_Click(sender As Object, e As EventArgs) Handles SignIn.Click
-
+        con_string = "Data Source=LAPTOP-I5S445IL\SQLEXPRESS;Initial Catalog=CMPT391;Integrated Security=True"
         Try
             'declare all the connection variables'
             Dim con As New SqlConnection
@@ -24,7 +24,7 @@ Public Class Sign_in
             End Try
             Console.WriteLine(myinteger)
             'replace with your own connection string'
-            con.ConnectionString = "Data Source=DESKTOP-IRRDDVT\SQLEXPRESS;Initial Catalog=CMPT391;Integrated Security=True"
+            con.ConnectionString = con_string
             'open connection and query to see if user exists'
             con.Open()
             cmd.Connection = con
@@ -36,7 +36,7 @@ Public Class Sign_in
                 MsgBox("Signing you in")
                 con.Close()
                 Me.Hide()
-                form.start_up(myinteger)
+                form.start_up(myinteger, con_string)
                 form.ShowDialog()
                 Me.Close()
             Else

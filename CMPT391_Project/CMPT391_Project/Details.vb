@@ -5,14 +5,15 @@ Imports System.Data.SqlClient
 Public Class Details
     Private user_id As Integer
     Private course_id As Integer
-
-    Public Sub startup(u_id As Integer, c_id As Integer)
+    Private con_string As String
+    Public Sub startup(u_id As Integer, c_id As Integer, con_s As String)
         user_id = u_id
         course_id = c_id
+        con_string = con_s
         Dim cap As Integer
         Try
             Dim con As New SqlConnection
-            con.ConnectionString = ("Data Source=DESKTOP-IRRDDVT\SQLEXPRESS;Initial Catalog=CMPT391;Integrated Security=True")
+            con.ConnectionString = (con_string)
             con.Open()
 
             Dim strsql As String
@@ -38,7 +39,7 @@ Public Class Details
 
         Try
             Dim con2 As New SqlConnection
-            con2.ConnectionString = ("Data Source=DESKTOP-IRRDDVT\SQLEXPRESS;Initial Catalog=CMPT391;Integrated Security=True")
+            con2.ConnectionString = (con_string)
             con2.Open()
             Dim strsql2 As String
             strsql2 = "SELECT COUNT(Couse_ID) AS num from Enrolled where Couse_ID = '" & course_id & "' "
