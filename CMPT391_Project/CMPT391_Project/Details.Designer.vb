@@ -125,9 +125,9 @@ Partial Class Details
         Me.Label11.AutoSize = True
         Me.Label11.Location = New System.Drawing.Point(38, 616)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(49, 13)
+        Me.Label11.Size = New System.Drawing.Size(52, 13)
         Me.Label11.TabIndex = 11
-        Me.Label11.Text = "Prereq(s)"
+        Me.Label11.Text = "Prereq(s):"
         '
         'PrereqLabel
         '

@@ -104,9 +104,10 @@ CREATE INDEX [FK] ON  [Courses] ([Department_ID], [Instructor_ID]);
 CREATE TABLE [Enrolled] (
   [Student_ID] INT,
   [Course_ID] INT,
+  [Section_ID] VARCHAR(10),
   [Semester] VARCHAR(50),
   [Year] INT,
-  PRIMARY KEY ([Student_ID], [Course_ID], [Semester], [Year])
+  PRIMARY KEY ([Student_ID], [Course_ID], [Section_ID], [Semester], [Year])
 );
 
 --------------
