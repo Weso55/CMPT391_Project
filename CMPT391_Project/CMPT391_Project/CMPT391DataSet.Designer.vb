@@ -3776,7 +3776,7 @@ Namespace CMPT391DataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = Global.CMPT391_Project.My.MySettings.Default.CMPT391ConnectionString1
+            Me._connection.ConnectionString = Global.CMPT391_Project.My.MySettings.Default.CMPT391ConnectionString
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4246,7 +4246,7 @@ Namespace CMPT391DataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = Global.CMPT391_Project.My.MySettings.Default.CMPT391ConnectionString1
+            Me._connection.ConnectionString = Global.CMPT391_Project.My.MySettings.Default.CMPT391ConnectionString
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4608,7 +4608,7 @@ Namespace CMPT391DataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = Global.CMPT391_Project.My.MySettings.Default.CMPT391ConnectionString1
+            Me._connection.ConnectionString = Global.CMPT391_Project.My.MySettings.Default.CMPT391ConnectionString
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4959,7 +4959,7 @@ Namespace CMPT391DataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = Global.CMPT391_Project.My.MySettings.Default.CMPT391ConnectionString1
+            Me._connection.ConnectionString = Global.CMPT391_Project.My.MySettings.Default.CMPT391ConnectionString
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5331,7 +5331,7 @@ Namespace CMPT391DataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = Global.CMPT391_Project.My.MySettings.Default.CMPT391ConnectionString1
+            Me._connection.ConnectionString = Global.CMPT391_Project.My.MySettings.Default.CMPT391ConnectionString
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5646,7 +5646,7 @@ Namespace CMPT391DataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = Global.CMPT391_Project.My.MySettings.Default.CMPT391ConnectionString1
+            Me._connection.ConnectionString = Global.CMPT391_Project.My.MySettings.Default.CMPT391ConnectionString
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5972,7 +5972,7 @@ Namespace CMPT391DataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = Global.CMPT391_Project.My.MySettings.Default.CMPT391ConnectionString1
+            Me._connection.ConnectionString = Global.CMPT391_Project.My.MySettings.Default.CMPT391ConnectionString
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
