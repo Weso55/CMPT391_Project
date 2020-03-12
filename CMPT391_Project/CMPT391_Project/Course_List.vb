@@ -16,7 +16,7 @@ Public Class Course_List
         con = New SqlConnection(con_string)
         PrevPage = prevp
 
-        adpt = New SqlDataAdapter("Select * from Courses where Year = 2020", con) 'only querying 2020 to save time'
+        adpt = New SqlDataAdapter("Select * from detail where Year = 2020", con) 'only querying 2020 to save time'
         'fill table with course details'
         Dim dt As DataTable = New DataTable
         adpt.Fill(dt)
@@ -99,12 +99,14 @@ Public Class Course_List
         Dim selectedrow As DataGridViewRow
         selectedrow = CourseDataGridView.Rows(index)
         'pull value from row cell'
-        Dim course_id As Integer = selectedrow.Cells(0).Value.ToString()
+        Dim course_id As Integer = selectedrow.Cells(0).Value
+        Dim semester As String = selectedrow.Cells(4).Value.ToString()
+        Dim year As Integer = selectedrow.Cells(5).Value
         'create new detail form and hid current form'
         Dim formDetails As New Details
         Me.Hide()
         'pass user_id and course_id (selected course to next form)'
-        formDetails.startup(user_id, course_id, con_string, Me)
+        formDetails.startup(user_id, course_id, semester, year, con_string, Me)
         formDetails.ShowDialog()
         'Me.Close()'
     End Sub

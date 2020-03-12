@@ -5,12 +5,16 @@ Imports System.Data.SqlClient
 Public Class Details
     Private user_id As Integer
     Private course_id As Integer
+    Private semester As String
+    Private year As Integer
     Private con_string As String
     Public PrevPage As Form
 
-    Public Sub startup(u_id As Integer, c_id As Integer, con_s As String, prevp As Course_List)
+    Public Sub startup(u_id As Integer, c_id As Integer, sem As String, yr As Integer, con_s As String, prevp As Course_List)
         user_id = u_id
         course_id = c_id
+        semester = sem
+        year = yr
         con_string = con_s
         PrevPage = prevp
 
@@ -65,6 +69,38 @@ Public Class Details
     End Sub
 
     Private Sub EnrollButton_Click(sender As Object, e As EventArgs) Handles EnrollButton.Click
+
+        Dim con3 As New SqlConnection
+        con3.ConnectionString = (con_string)
+        con3.Open()
+        Dim command As New SqlCommand
+        command = con3.CreateCommand
+
+        Dim transaction As SqlTransaction
+        transaction = con3.BeginTransaction("EnrollTransaction")
+
+        command.Connection = con3
+        command.Transaction = transaction
+
+        Try
+            command.CommandText = "INSERT INTO Enrolled (Student_ID, Course_ID, Semester, Year) values (" & user_id & ", " & course_id & ", '" & semester & "', " & year & "); "
+            command.ExecuteNonQuery()
+
+            transaction.Commit()
+            Debug.Write("Transaction committed" & Environment.NewLine)
+            MsgBox("Enrolled!")
+
+        Catch ex As Exception
+            MsgBox("Error Enroll Failed: " & ex.Message & " ")
+
+            Try
+                transaction.Rollback()
+            Catch ex2 As Exception
+                MsgBox("Error Rollback Failed: " & ex.Message & " ")
+            End Try
+
+        End Try
+
 
     End Sub
 End Class
