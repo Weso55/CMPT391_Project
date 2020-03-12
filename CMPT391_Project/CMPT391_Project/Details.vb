@@ -50,7 +50,7 @@ Public Class Details
             con2.ConnectionString = (con_string)
             con2.Open()
             Dim strsql2 As String
-            strsql2 = "SELECT COUNT(Course_ID) AS num from Enrolled where Course_ID = '" & course_id & "' "
+            strsql2 = "SELECT COUNT(Course_ID) AS num from Enrolled where Course_ID = '" & course_id & "' and Semester = '" & semester & "' and Year = " & year & "; "
             Dim cmd2 As New SqlCommand(strsql2, con2)
             Dim dr2 As SqlDataReader
             dr2 = cmd2.ExecuteReader
@@ -61,6 +61,27 @@ Public Class Details
         Catch ex As Exception
             MsgBox("Error Count Failed: " & ex.Message & " ")
         End Try
+
+        Try
+            Dim con4 As New SqlConnection
+            con4.ConnectionString = (con_string)
+            con4.Open()
+            Dim strsql4 As String
+            strsql4 = "SELECT Prereq.prereq_id, isnull(Name, 'None') AS Name
+                       FROM Prereq
+                       LEFT JOIN (SELECT distinct Prereq.Course_id, Name FROM Courses,Prereq WHERE Courses.Course_ID = Prereq.Course_id) AS PR
+                       ON Prereq.prereq_id = PR.Course_id
+                       WHERE Prereq.Course_id = " & course_id & "; "
+            Dim cmd4 As New SqlCommand(strsql4, con4)
+            Dim dr4 As SqlDataReader
+            dr4 = cmd4.ExecuteReader
+            dr4.Read()
+            PrereqLabel.Text = dr4("Name")
+            con4.Close()
+        Catch ex As Exception
+            MsgBox("Error Prereq select Failed: " & ex.Message & " ")
+        End Try
+
     End Sub
 
     Private Sub BackButton_Click(sender As Object, e As EventArgs) Handles BackButton.Click
