@@ -1142,6 +1142,8 @@ Partial Public Class CMPT391DataSet
         
         Private columnCourse_ID As Global.System.Data.DataColumn
         
+        Private columnSection_ID As Global.System.Data.DataColumn
+        
         Private columnSemester As Global.System.Data.DataColumn
         
         Private columnYear As Global.System.Data.DataColumn
@@ -1199,6 +1201,14 @@ Partial Public Class CMPT391DataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Section_IDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSection_ID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public ReadOnly Property SemesterColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnSemester
@@ -1250,9 +1260,9 @@ Partial Public Class CMPT391DataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddEnrolledRow(ByVal Student_ID As Integer, ByVal Course_ID As Integer, ByVal Semester As String, ByVal Year As Integer) As EnrolledRow
+        Public Overloads Function AddEnrolledRow(ByVal Student_ID As Integer, ByVal Course_ID As Integer, ByVal Section_ID As String, ByVal Semester As String, ByVal Year As Integer) As EnrolledRow
             Dim rowEnrolledRow As EnrolledRow = CType(Me.NewRow,EnrolledRow)
-            Dim columnValuesArray() As Object = New Object() {Student_ID, Course_ID, Semester, Year}
+            Dim columnValuesArray() As Object = New Object() {Student_ID, Course_ID, Section_ID, Semester, Year}
             rowEnrolledRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowEnrolledRow)
             Return rowEnrolledRow
@@ -1260,8 +1270,8 @@ Partial Public Class CMPT391DataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function FindByStudent_IDCourse_IDSemesterYear(ByVal Student_ID As Integer, ByVal Course_ID As Integer, ByVal Semester As String, ByVal Year As Integer) As EnrolledRow
-            Return CType(Me.Rows.Find(New Object() {Student_ID, Course_ID, Semester, Year}),EnrolledRow)
+        Public Function FindByStudent_IDCourse_IDSection_IDSemesterYear(ByVal Student_ID As Integer, ByVal Course_ID As Integer, ByVal Section_ID As String, ByVal Semester As String, ByVal Year As Integer) As EnrolledRow
+            Return CType(Me.Rows.Find(New Object() {Student_ID, Course_ID, Section_ID, Semester, Year}),EnrolledRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1283,6 +1293,7 @@ Partial Public Class CMPT391DataSet
         Friend Sub InitVars()
             Me.columnStudent_ID = MyBase.Columns("Student_ID")
             Me.columnCourse_ID = MyBase.Columns("Course_ID")
+            Me.columnSection_ID = MyBase.Columns("Section_ID")
             Me.columnSemester = MyBase.Columns("Semester")
             Me.columnYear = MyBase.Columns("Year")
         End Sub
@@ -1294,13 +1305,17 @@ Partial Public Class CMPT391DataSet
             MyBase.Columns.Add(Me.columnStudent_ID)
             Me.columnCourse_ID = New Global.System.Data.DataColumn("Course_ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCourse_ID)
+            Me.columnSection_ID = New Global.System.Data.DataColumn("Section_ID", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSection_ID)
             Me.columnSemester = New Global.System.Data.DataColumn("Semester", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnSemester)
             Me.columnYear = New Global.System.Data.DataColumn("Year", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnYear)
-            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnStudent_ID, Me.columnCourse_ID, Me.columnSemester, Me.columnYear}, true))
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnStudent_ID, Me.columnCourse_ID, Me.columnSection_ID, Me.columnSemester, Me.columnYear}, true))
             Me.columnStudent_ID.AllowDBNull = false
             Me.columnCourse_ID.AllowDBNull = false
+            Me.columnSection_ID.AllowDBNull = false
+            Me.columnSection_ID.MaxLength = 10
             Me.columnSemester.AllowDBNull = false
             Me.columnSemester.MaxLength = 50
             Me.columnYear.AllowDBNull = false
@@ -2314,6 +2329,10 @@ Partial Public Class CMPT391DataSet
         
         Private columnI_name As Global.System.Data.DataColumn
         
+        Private columnSemester As Global.System.Data.DataColumn
+        
+        Private columnYear As Global.System.Data.DataColumn
+        
         Private columnD_name As Global.System.Data.DataColumn
         
         Private columncap As Global.System.Data.DataColumn
@@ -2387,6 +2406,22 @@ Partial Public Class CMPT391DataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property SemesterColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSemester
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property YearColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnYear
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public ReadOnly Property D_nameColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnD_name
@@ -2438,12 +2473,18 @@ Partial Public Class CMPT391DataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AdddetailRow(ByVal Class_ID As Integer, ByVal C_Name As String, ByVal S_ID As String, ByVal I_name As String, ByVal D_name As String, ByVal cap As Integer) As detailRow
+        Public Overloads Function AdddetailRow(ByVal Class_ID As Integer, ByVal C_Name As String, ByVal S_ID As String, ByVal I_name As String, ByVal Semester As String, ByVal Year As Integer, ByVal D_name As String, ByVal cap As Integer) As detailRow
             Dim rowdetailRow As detailRow = CType(Me.NewRow,detailRow)
-            Dim columnValuesArray() As Object = New Object() {Class_ID, C_Name, S_ID, I_name, D_name, cap}
+            Dim columnValuesArray() As Object = New Object() {Class_ID, C_Name, S_ID, I_name, Semester, Year, D_name, cap}
             rowdetailRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowdetailRow)
             Return rowdetailRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function FindByClass_IDS_IDSemesterYear(ByVal Class_ID As Integer, ByVal S_ID As String, ByVal Semester As String, ByVal Year As Integer) As detailRow
+            Return CType(Me.Rows.Find(New Object() {Class_ID, S_ID, Semester, Year}),detailRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2467,6 +2508,8 @@ Partial Public Class CMPT391DataSet
             Me.columnC_Name = MyBase.Columns("C_Name")
             Me.columnS_ID = MyBase.Columns("S_ID")
             Me.columnI_name = MyBase.Columns("I_name")
+            Me.columnSemester = MyBase.Columns("Semester")
+            Me.columnYear = MyBase.Columns("Year")
             Me.columnD_name = MyBase.Columns("D_name")
             Me.columncap = MyBase.Columns("cap")
         End Sub
@@ -2482,15 +2525,23 @@ Partial Public Class CMPT391DataSet
             MyBase.Columns.Add(Me.columnS_ID)
             Me.columnI_name = New Global.System.Data.DataColumn("I_name", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnI_name)
+            Me.columnSemester = New Global.System.Data.DataColumn("Semester", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSemester)
+            Me.columnYear = New Global.System.Data.DataColumn("Year", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnYear)
             Me.columnD_name = New Global.System.Data.DataColumn("D_name", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnD_name)
             Me.columncap = New Global.System.Data.DataColumn("cap", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columncap)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnClass_ID, Me.columnS_ID, Me.columnSemester, Me.columnYear}, true))
             Me.columnClass_ID.AllowDBNull = false
             Me.columnC_Name.MaxLength = 50
             Me.columnS_ID.AllowDBNull = false
             Me.columnS_ID.MaxLength = 10
             Me.columnI_name.MaxLength = 50
+            Me.columnSemester.AllowDBNull = false
+            Me.columnSemester.MaxLength = 50
+            Me.columnYear.AllowDBNull = false
             Me.columnD_name.MaxLength = 50
         End Sub
         
@@ -2909,6 +2960,17 @@ Partial Public Class CMPT391DataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Section_ID() As String
+            Get
+                Return CType(Me(Me.tableEnrolled.Section_IDColumn),String)
+            End Get
+            Set
+                Me(Me.tableEnrolled.Section_IDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property Semester() As String
             Get
                 Return CType(Me(Me.tableEnrolled.SemesterColumn),String)
@@ -3221,6 +3283,28 @@ Partial Public Class CMPT391DataSet
             End Get
             Set
                 Me(Me.tabledetail.I_nameColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Semester() As String
+            Get
+                Return CType(Me(Me.tabledetail.SemesterColumn),String)
+            End Get
+            Set
+                Me(Me.tabledetail.SemesterColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Year() As Integer
+            Get
+                Return CType(Me(Me.tabledetail.YearColumn),Integer)
+            End Get
+            Set
+                Me(Me.tabledetail.YearColumn) = value
             End Set
         End Property
         
@@ -4561,45 +4645,52 @@ Namespace CMPT391DataSetTableAdapters
             tableMapping.DataSetTable = "Enrolled"
             tableMapping.ColumnMappings.Add("Student_ID", "Student_ID")
             tableMapping.ColumnMappings.Add("Course_ID", "Course_ID")
+            tableMapping.ColumnMappings.Add("Section_ID", "Section_ID")
             tableMapping.ColumnMappings.Add("Semester", "Semester")
             tableMapping.ColumnMappings.Add("Year", "Year")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Enrolled] WHERE (([Student_ID] = @Original_Student_ID) AND ([C"& _ 
-                "ourse_ID] = @Original_Course_ID) AND ([Semester] = @Original_Semester) AND ([Yea"& _ 
-                "r] = @Original_Year))"
+                "ourse_ID] = @Original_Course_ID) AND ([Section_ID] = @Original_Section_ID) AND ("& _ 
+                "[Semester] = @Original_Semester) AND ([Year] = @Original_Year))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Student_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Student_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Course_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Course_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Section_ID", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Section_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Semester", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Semester", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Year", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Year", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Enrolled] ([Student_ID], [Course_ID], [Semester], [Year]) VALU"& _ 
-                "ES (@Student_ID, @Course_ID, @Semester, @Year);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Student_ID, Course_ID, S"& _ 
-                "emester, Year FROM Enrolled WHERE (Course_ID = @Course_ID) AND (Semester = @Seme"& _ 
-                "ster) AND (Student_ID = @Student_ID) AND (Year = @Year)"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Enrolled] ([Student_ID], [Course_ID], [Section_ID], [Semester]"& _ 
+                ", [Year]) VALUES (@Student_ID, @Course_ID, @Section_ID, @Semester, @Year);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELE"& _ 
+                "CT Student_ID, Course_ID, Section_ID, Semester, Year FROM Enrolled WHERE (Course"& _ 
+                "_ID = @Course_ID) AND (Section_ID = @Section_ID) AND (Semester = @Semester) AND "& _ 
+                "(Student_ID = @Student_ID) AND (Year = @Year)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Student_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Student_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Course_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Course_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Section_ID", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Section_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Semester", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Semester", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Year", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Year", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Enrolled] SET [Student_ID] = @Student_ID, [Course_ID] = @Course_ID,"& _ 
-                " [Semester] = @Semester, [Year] = @Year WHERE (([Student_ID] = @Original_Student"& _ 
-                "_ID) AND ([Course_ID] = @Original_Course_ID) AND ([Semester] = @Original_Semeste"& _ 
-                "r) AND ([Year] = @Original_Year));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Student_ID, Course_ID, Semester, Year"& _ 
-                " FROM Enrolled WHERE (Course_ID = @Course_ID) AND (Semester = @Semester) AND (St"& _ 
-                "udent_ID = @Student_ID) AND (Year = @Year)"
+                " [Section_ID] = @Section_ID, [Semester] = @Semester, [Year] = @Year WHERE (([Stu"& _ 
+                "dent_ID] = @Original_Student_ID) AND ([Course_ID] = @Original_Course_ID) AND ([S"& _ 
+                "ection_ID] = @Original_Section_ID) AND ([Semester] = @Original_Semester) AND ([Y"& _ 
+                "ear] = @Original_Year));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Student_ID, Course_ID, Section_ID, Semester, Ye"& _ 
+                "ar FROM Enrolled WHERE (Course_ID = @Course_ID) AND (Section_ID = @Section_ID) A"& _ 
+                "ND (Semester = @Semester) AND (Student_ID = @Student_ID) AND (Year = @Year)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Student_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Student_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Course_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Course_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Section_ID", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Section_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Semester", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Semester", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Year", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Year", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Student_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Student_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Course_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Course_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Section_ID", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Section_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Semester", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Semester", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Year", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Year", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
@@ -4617,7 +4708,7 @@ Namespace CMPT391DataSetTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT Student_ID, Course_ID, Semester, Year FROM dbo.Enrolled"
+            Me._commandCollection(0).CommandText = "SELECT Student_ID, Course_ID, Section_ID, Semester, Year FROM dbo.Enrolled"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -4677,15 +4768,20 @@ Namespace CMPT391DataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_Student_ID As Integer, ByVal Original_Course_ID As Integer, ByVal Original_Semester As String, ByVal Original_Year As Integer) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_Student_ID As Integer, ByVal Original_Course_ID As Integer, ByVal Original_Section_ID As String, ByVal Original_Semester As String, ByVal Original_Year As Integer) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_Student_ID,Integer)
             Me.Adapter.DeleteCommand.Parameters(1).Value = CType(Original_Course_ID,Integer)
+            If (Original_Section_ID Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Section_ID")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_Section_ID,String)
+            End If
             If (Original_Semester Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Semester")
             Else
-                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_Semester,String)
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(Original_Semester,String)
             End If
-            Me.Adapter.DeleteCommand.Parameters(3).Value = CType(Original_Year,Integer)
+            Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_Year,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -4705,15 +4801,20 @@ Namespace CMPT391DataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal Student_ID As Integer, ByVal Course_ID As Integer, ByVal Semester As String, ByVal Year As Integer) As Integer
+        Public Overloads Overridable Function Insert(ByVal Student_ID As Integer, ByVal Course_ID As Integer, ByVal Section_ID As String, ByVal Semester As String, ByVal Year As Integer) As Integer
             Me.Adapter.InsertCommand.Parameters(0).Value = CType(Student_ID,Integer)
             Me.Adapter.InsertCommand.Parameters(1).Value = CType(Course_ID,Integer)
+            If (Section_ID Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Section_ID")
+            Else
+                Me.Adapter.InsertCommand.Parameters(2).Value = CType(Section_ID,String)
+            End If
             If (Semester Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Semester")
             Else
-                Me.Adapter.InsertCommand.Parameters(2).Value = CType(Semester,String)
+                Me.Adapter.InsertCommand.Parameters(3).Value = CType(Semester,String)
             End If
-            Me.Adapter.InsertCommand.Parameters(3).Value = CType(Year,Integer)
+            Me.Adapter.InsertCommand.Parameters(4).Value = CType(Year,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -4733,23 +4834,33 @@ Namespace CMPT391DataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal Student_ID As Integer, ByVal Course_ID As Integer, ByVal Semester As String, ByVal Year As Integer, ByVal Original_Student_ID As Integer, ByVal Original_Course_ID As Integer, ByVal Original_Semester As String, ByVal Original_Year As Integer) As Integer
+        Public Overloads Overridable Function Update(ByVal Student_ID As Integer, ByVal Course_ID As Integer, ByVal Section_ID As String, ByVal Semester As String, ByVal Year As Integer, ByVal Original_Student_ID As Integer, ByVal Original_Course_ID As Integer, ByVal Original_Section_ID As String, ByVal Original_Semester As String, ByVal Original_Year As Integer) As Integer
             Me.Adapter.UpdateCommand.Parameters(0).Value = CType(Student_ID,Integer)
             Me.Adapter.UpdateCommand.Parameters(1).Value = CType(Course_ID,Integer)
+            If (Section_ID Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Section_ID")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(Section_ID,String)
+            End If
             If (Semester Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Semester")
             Else
-                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(Semester,String)
+                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(Semester,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(3).Value = CType(Year,Integer)
-            Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Original_Student_ID,Integer)
-            Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Original_Course_ID,Integer)
+            Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Year,Integer)
+            Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Original_Student_ID,Integer)
+            Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Original_Course_ID,Integer)
+            If (Original_Section_ID Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Section_ID")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Original_Section_ID,String)
+            End If
             If (Original_Semester Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Semester")
             Else
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Original_Semester,String)
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_Semester,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Original_Year,Integer)
+            Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_Year,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -4769,8 +4880,8 @@ Namespace CMPT391DataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal Original_Student_ID As Integer, ByVal Original_Course_ID As Integer, ByVal Original_Semester As String, ByVal Original_Year As Integer) As Integer
-            Return Me.Update(Original_Student_ID, Original_Course_ID, Original_Semester, Original_Year, Original_Student_ID, Original_Course_ID, Original_Semester, Original_Year)
+        Public Overloads Overridable Function Update(ByVal Original_Student_ID As Integer, ByVal Original_Course_ID As Integer, ByVal Original_Section_ID As String, ByVal Original_Semester As String, ByVal Original_Year As Integer) As Integer
+            Return Me.Update(Original_Student_ID, Original_Course_ID, Original_Section_ID, Original_Semester, Original_Year, Original_Student_ID, Original_Course_ID, Original_Section_ID, Original_Semester, Original_Year)
         End Function
     End Class
     
@@ -5963,6 +6074,8 @@ Namespace CMPT391DataSetTableAdapters
             tableMapping.ColumnMappings.Add("C_Name", "C_Name")
             tableMapping.ColumnMappings.Add("S_ID", "S_ID")
             tableMapping.ColumnMappings.Add("I_name", "I_name")
+            tableMapping.ColumnMappings.Add("Semester", "Semester")
+            tableMapping.ColumnMappings.Add("Year", "Year")
             tableMapping.ColumnMappings.Add("D_name", "D_name")
             tableMapping.ColumnMappings.Add("cap", "cap")
             Me._adapter.TableMappings.Add(tableMapping)
@@ -5981,7 +6094,8 @@ Namespace CMPT391DataSetTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT Class_ID, C_Name, S_ID, I_name, D_name, cap FROM dbo.detail"
+            Me._commandCollection(0).CommandText = "SELECT Class_ID, C_Name, S_ID, I_name, Semester, Year, D_name, cap FROM dbo.detai"& _ 
+                "l"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         

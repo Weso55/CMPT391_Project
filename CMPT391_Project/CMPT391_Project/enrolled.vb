@@ -38,30 +38,50 @@ Public Class enrolled
     End Sub
 
     Private Sub RefreshButton_Click(sender As Object, e As EventArgs) Handles RefreshButton.Click
-        Dim sem As String
-        Dim year As Integer
+        Dim where_string As String = ""
+        Dim flag As Integer = 0
 
-        'Check if combo boxes are selected'
-        If SemComboBox.SelectedIndex = -1 Then
-            MsgBox("select semester")
-            Exit Sub
+        'find out how many options in search have been selected
+        If Not SemComboBox.SelectedIndex = -1 Then
+            flag += 1
+        End If
+        If Not YearComboBox.SelectedIndex = -1 Then
+            flag += 1
         End If
 
-        If YearComboBox.SelectedIndex = -1 Then
-            MsgBox("select Year")
-            Exit Sub
+        'build where string based on selected options
+        If Not SemComboBox.SelectedIndex = -1 Then
+            Dim sem As String = SemComboBox.Text
+            where_string = where_string & " Semester='" & sem & "' "
+            If flag > 1 Then
+                where_string = where_string & "and " & " "
+                flag -= 1
+            End If
         End If
 
-        sem = SemComboBox.Text
-        year = CInt(YearComboBox.Text)
+        If Not YearComboBox.SelectedIndex = -1 Then
+            Dim year As String = YearComboBox.Text
+            where_string = where_string & " Year='" & year & "' "
+            If flag > 1 Then
+                where_string = where_string & "and" & " "
+                flag -= 1
+            End If
+        End If
 
         con = New SqlConnection(con_string)
-        adpt = New SqlDataAdapter("Select * from Enrolled where Student_ID=" & user_id & " and Year=" & year & " and Semester='" & sem & "' ", con)
+        If flag = 0 Then
+            adpt = New SqlDataAdapter("Select * from Enrolled where Student_ID=" & user_id & " ", con)
+
+        Else
+            adpt = New SqlDataAdapter("Select * from Enrolled where Student_ID=" & user_id & "and" & where_string, con)
+        End If
+
         Dim dt As DataTable = New DataTable
 
         'fill table with enrolled details'
         adpt.Fill(dt)
         EnrollData.DataSource = dt
+
     End Sub
 
     Private Sub BackButton_Click(sender As Object, e As EventArgs) Handles BackButton.Click
