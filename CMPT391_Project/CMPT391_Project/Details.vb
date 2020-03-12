@@ -7,14 +7,16 @@ Public Class Details
     Private course_id As Integer
     Private semester As String
     Private year As Integer
+    Private section As String
     Private con_string As String
     Public PrevPage As Form
 
-    Public Sub startup(u_id As Integer, c_id As Integer, sem As String, yr As Integer, con_s As String, prevp As Course_List)
+    Public Sub startup(u_id As Integer, c_id As Integer, sem As String, yr As Integer, sec As String, con_s As String, prevp As Course_List)
         user_id = u_id
         course_id = c_id
         semester = sem
         year = yr
+        section = sec
         con_string = con_s
         PrevPage = prevp
 
@@ -25,7 +27,7 @@ Public Class Details
             con.Open()
 
             Dim strsql As String
-            strsql = "select * from detail where Class_ID = '" & course_id & "' "
+            strsql = "select * from detail where Class_ID = '" & course_id & "' and Semester = '" & semester & "' and Year = " & year & " and S_ID = '" & section & "';"
 
             Dim cmd As New SqlCommand(strsql, con)
 
@@ -50,7 +52,7 @@ Public Class Details
             con2.ConnectionString = (con_string)
             con2.Open()
             Dim strsql2 As String
-            strsql2 = "SELECT COUNT(Course_ID) AS num from Enrolled where Course_ID = '" & course_id & "' and Semester = '" & semester & "' and Year = " & year & "; "
+            strsql2 = "SELECT COUNT(Course_ID) AS num from Enrolled where Course_ID = '" & course_id & "' and Semester = '" & semester & "' and Year = " & year & " and Section_ID = '" & section & "';"
             Dim cmd2 As New SqlCommand(strsql2, con2)
             Dim dr2 As SqlDataReader
             dr2 = cmd2.ExecuteReader
@@ -104,7 +106,7 @@ Public Class Details
         command.Transaction = transaction
 
         Try
-            command.CommandText = "INSERT INTO Enrolled (Student_ID, Course_ID, Semester, Year) values (" & user_id & ", " & course_id & ", '" & semester & "', " & year & "); "
+            command.CommandText = "INSERT INTO Enrolled (Student_ID, Course_ID, Section_ID, Semester, Year) values (" & user_id & ", " & course_id & ", '" & section & "', '" & semester & "', " & year & "); "
             command.ExecuteNonQuery()
 
             transaction.Commit()
