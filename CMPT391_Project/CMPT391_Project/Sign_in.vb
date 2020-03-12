@@ -26,8 +26,8 @@ Public Class Sign_in
             Dim myinteger As Integer
             Try
                 myinteger = CInt(user_text)
-            Catch
-                Console.WriteLine("Error with the string")
+            Catch ex As Exception
+                MsgBox("Error: " & ex.Message & " ")
             End Try
             Console.WriteLine(myinteger)
             'replace with your own connection string'
@@ -40,15 +40,13 @@ Public Class Sign_in
             dr = cmd.ExecuteReader
             'check if query returned a row -> means the user exists'
             If dr.HasRows Then
-                MsgBox("Signing you in")
+                dr.Read()
+
+                MsgBox("Signing in: " + dr("Name"))
                 con.Close()
                 Me.Hide()
-                'Debug.Write("test")
                 formEnrolled.start_up(myinteger, con_string, Me)
-                'Debug.Write("test2")
                 formEnrolled.ShowDialog()
-                'Debug.Write("test3")
-                'Me.Close()'
             Else
                 MsgBox("User does not Exist")
             End If
