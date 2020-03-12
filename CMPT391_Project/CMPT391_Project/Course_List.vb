@@ -16,7 +16,7 @@ Public Class Course_List
         con = New SqlConnection(con_string)
         PrevPage = prevp
 
-        adpt = New SqlDataAdapter("Select * from Courses where Year = 2020", con) 'only querying 2020 to save time'
+        adpt = New SqlDataAdapter("Select * from Courses", con) 'only querying 2020 to save time'
         'fill table with course details'
         Dim dt As DataTable = New DataTable
         adpt.Fill(dt)
