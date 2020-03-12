@@ -1,4 +1,4 @@
-USE cmpt391; /*replace with your db name*/
+/*USE cmpt391; /*replace with your db name*/
 
 CREATE TABLE [Department] (
   [Department_ID] INT,
@@ -43,10 +43,17 @@ CREATE TABLE [Students] (
   PRIMARY KEY ([Student_ID])
 );
 
-CREATE INDEX [FK] ON  [Students] ([Course_ID]);
+CREATE INDEX [FK] ON  [Students] ([Course_ID]);*/
                                                                     
 -------------------------------------------------------------------- new Tables
 USE cmpt391; /*replace with your db name*/
+
+DROP TABLE [Students];
+DROP TABLE [Department];
+DROP TABLE [Instructors];
+DROP TABLE [Prereq];
+DROP TABLE [Courses];
+DROP TABLE [Enrolled];
                                                                     
 CREATE TABLE [Students] (
   [Student_ID] INT,
@@ -99,15 +106,14 @@ CREATE TABLE [Enrolled] (
   [Course_ID] INT,
   [Semester] VARCHAR(50),
   [Year] INT,
-  PRIMARY KEY ([Student_ID], [Couse_ID], [Semester], [Year])
+  PRIMARY KEY ([Student_ID], [Course_ID], [Semester], [Year])
 );
 
 --------------
-                                                      
-                                                      
+/* 'moved this to CreateView.sql'
 CREATE VIEW detail AS
 SELECT Courses.Course_ID AS Class_ID, Courses.Name AS C_Name, Courses.Section_ID AS S_ID,Instructors.Name AS I_name,Department.Name AS D_name,Courses.Capacity AS cap   
 FROM Courses,Instructors,Department  
 WHERE Courses.Department_ID = Department.Department_ID AND Instructors.Department_ID = Department.Department_ID
-                                                     
+*/
                                                                 

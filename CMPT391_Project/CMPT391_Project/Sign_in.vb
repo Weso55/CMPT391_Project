@@ -3,7 +3,8 @@
 Public Class Sign_in
     Private con_string As String
     Private Sub SignIn_Click(sender As Object, e As EventArgs) Handles SignIn.Click
-        con_string = "Data Source=LAPTOP-I5S445IL\SQLEXPRESS;Initial Catalog=CMPT391;Integrated Security=True"
+        'con_string = "Data Source=LAPTOP-I5S445IL\SQLEXPRESS;Initial Catalog=CMPT391;Integrated Security=True"'
+        con_string = "Data Source=DESKTOP-DBHGK71\SQL2017;Initial Catalog=cmpt391;Integrated Security=True"
         Try
             'declare all the connection variables'
             Dim con As New SqlConnection
@@ -51,7 +52,8 @@ Public Class Sign_in
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        con_string = "Data Source=LAPTOP-I5S445IL\SQLEXPRESS;Initial Catalog=CMPT391;Integrated Security=True"
+        'con_string = "Data Source=LAPTOP-I5S445IL\SQLEXPRESS;Initial Catalog=CMPT391;Integrated Security=True"'
+        con_string = "Data Source=DESKTOP-DBHGK71\SQL2017;Initial Catalog=cmpt391;Integrated Security=True"
         Dim d_form As New Data_Generation
         d_form.startup(con_string)
         d_form.ShowDialog()
