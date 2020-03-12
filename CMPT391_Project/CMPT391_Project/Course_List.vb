@@ -83,7 +83,7 @@ Public Class Course_List
             Try
                 adpt = New SqlDataAdapter("Select * from Courses where " + where_string, con)
             Catch ex As Exception
-                MsgBox("invalid selection")
+                MsgBox("invalid selection: " + ex.Message)
             End Try
         End If
         Dim dt As DataTable = New DataTable

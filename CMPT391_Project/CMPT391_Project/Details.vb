@@ -37,7 +37,7 @@ Public Class Details
             cap = dr("cap")
             con.Close()
         Catch ex As Exception
-            MsgBox("Error")
+            MsgBox("Error Detail select Failed: " & ex.Message & " ")
 
         End Try
 
@@ -55,7 +55,7 @@ Public Class Details
             StatusLabel.Text = dr2("num") & " /" & cap & " "
             con2.Close()
         Catch ex As Exception
-            MsgBox("Error")
+            MsgBox("Error Count Failed: " & ex.Message & " ")
         End Try
     End Sub
 
