@@ -33,9 +33,10 @@ Partial Class Details
         Me.StatusLabel = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.PrereqLabel = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.EnrollButton = New System.Windows.Forms.Button()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.DepartmentLabel = New System.Windows.Forms.Label()
+        Me.BackButton = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Label1
@@ -137,14 +138,14 @@ Partial Class Details
         Me.PrereqLabel.TabIndex = 12
         Me.PrereqLabel.Text = "Label12"
         '
-        'Button1
+        'EnrollButton
         '
-        Me.Button1.Location = New System.Drawing.Point(534, 616)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(164, 58)
-        Me.Button1.TabIndex = 13
-        Me.Button1.Text = "Enroll"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.EnrollButton.Location = New System.Drawing.Point(534, 616)
+        Me.EnrollButton.Name = "EnrollButton"
+        Me.EnrollButton.Size = New System.Drawing.Size(164, 58)
+        Me.EnrollButton.TabIndex = 13
+        Me.EnrollButton.Text = "Enroll"
+        Me.EnrollButton.UseVisualStyleBackColor = True
         '
         'Label13
         '
@@ -164,14 +165,24 @@ Partial Class Details
         Me.DepartmentLabel.TabIndex = 15
         Me.DepartmentLabel.Text = "Label14"
         '
+        'BackButton
+        '
+        Me.BackButton.Location = New System.Drawing.Point(715, 702)
+        Me.BackButton.Name = "BackButton"
+        Me.BackButton.Size = New System.Drawing.Size(114, 23)
+        Me.BackButton.TabIndex = 16
+        Me.BackButton.Text = "Back to Course List"
+        Me.BackButton.UseVisualStyleBackColor = True
+        '
         'Details
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(841, 737)
+        Me.Controls.Add(Me.BackButton)
         Me.Controls.Add(Me.DepartmentLabel)
         Me.Controls.Add(Me.Label13)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.EnrollButton)
         Me.Controls.Add(Me.PrereqLabel)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.StatusLabel)
@@ -201,7 +212,8 @@ Partial Class Details
     Friend WithEvents StatusLabel As Label
     Friend WithEvents Label11 As Label
     Friend WithEvents PrereqLabel As Label
-    Friend WithEvents Button1 As Button
+    Friend WithEvents EnrollButton As Button
     Friend WithEvents Label13 As Label
     Friend WithEvents DepartmentLabel As Label
+    Friend WithEvents BackButton As Button
 End Class

@@ -7,13 +7,16 @@ Public Class Course_List
     Private cmd As SqlCommand
     Private adpt As SqlDataAdapter
     Private con_string As String
+    Public PrevPage As Form
 
     ' run startup in previous form before showing form to preload datagrid
-    Public Sub startup(id As Integer, con_s As String)
+    Public Sub startup(id As Integer, con_s As String, prevp As enrolled)
         user_id = id
         con_string = con_s
         con = New SqlConnection(con_string)
-        adpt = New SqlDataAdapter("Select * from Courses", con)
+        PrevPage = prevp
+
+        adpt = New SqlDataAdapter("Select * from Courses where Year = 2020", con) 'only querying 2020 to save time'
         'fill table with course details'
         Dim dt As DataTable = New DataTable
         adpt.Fill(dt)
@@ -98,13 +101,16 @@ Public Class Course_List
         'pull value from row cell'
         Dim course_id As Integer = selectedrow.Cells(0).Value.ToString()
         'create new detail form and hid current form'
-        Dim form As New Details
+        Dim formDetails As New Details
         Me.Hide()
         'pass user_id and course_id (selected course to next form)'
-        form.startup(user_id, course_id, con_string)
-        form.ShowDialog()
-        Me.Close()
+        formDetails.startup(user_id, course_id, con_string, Me)
+        formDetails.ShowDialog()
+        'Me.Close()'
     End Sub
 
-
+    Private Sub BackButton_Click(sender As Object, e As EventArgs) Handles BackButton.Click
+        Me.Hide() 'hides formCourseList'
+        PrevPage.Show()
+    End Sub
 End Class

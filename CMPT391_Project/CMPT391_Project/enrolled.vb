@@ -8,14 +8,16 @@ Public Class enrolled
     Private cmd As SqlCommand
     Private adpt As SqlDataAdapter
     Private con_string As String
+    Public PrevPage As Form
 
     'code to run before switching to this form in the previous form (if that makes sense?)'
-    Public Sub start_up(ID As Integer, con_s As String)
+    Public Sub start_up(ID As Integer, con_s As String, prevp As Sign_in)
         user_id = ID
         con_string = con_s
+        PrevPage = prevp
         If Not IsNumeric(user_id) Then
             Console.WriteLine("Invalid user id")
-        Exit Sub
+            Exit Sub
         End If
 
         'open new connection'
@@ -28,11 +30,11 @@ Public Class enrolled
     End Sub
 
     Private Sub ViewCourses_Click(sender As Object, e As EventArgs) Handles ViewCourses.Click
-        Dim form As New Course_List
+        Dim formCourseList As New Course_List
         Me.Hide()
-        form.startup(user_id, con_string)
-        form.ShowDialog()
-        Me.Close()
+        formCourseList.startup(user_id, con_string, Me)
+        formCourseList.ShowDialog()
+        'Me.Close()'
     End Sub
 
     Private Sub RefreshButton_Click(sender As Object, e As EventArgs) Handles RefreshButton.Click
@@ -62,4 +64,8 @@ Public Class enrolled
         EnrollData.DataSource = dt
     End Sub
 
+    Private Sub BackButton_Click(sender As Object, e As EventArgs) Handles BackButton.Click
+        Me.Hide() 'hides formEnrolled'
+        PrevPage.Show()
+    End Sub
 End Class

@@ -12,7 +12,7 @@ Public Class Sign_in
             Dim dr As SqlDataReader
             Dim user_text As String
             'new form'
-            Dim form As New enrolled
+            Dim formEnrolled As New enrolled
 
             user_text = TextBox1.Text
 
@@ -37,9 +37,9 @@ Public Class Sign_in
                 MsgBox("Signing you in")
                 con.Close()
                 Me.Hide()
-                form.start_up(myinteger, con_string)
-                form.ShowDialog()
-                Me.Close()
+                formEnrolled.start_up(myinteger, con_string, Me)
+                formEnrolled.ShowDialog()
+                'Me.Close()'
             Else
                 MsgBox("User does not Exist")
             End If
@@ -57,5 +57,9 @@ Public Class Sign_in
         Dim d_form As New Data_Generation
         d_form.startup(con_string)
         d_form.ShowDialog()
+    End Sub
+
+    Private Sub ExitButton_Click(sender As Object, e As EventArgs) Handles ExitButton.Click
+        Application.Exit()
     End Sub
 End Class

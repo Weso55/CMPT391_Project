@@ -32,6 +32,7 @@ Partial Class enrolled
         Me.RefreshButton = New System.Windows.Forms.Button()
         Me.YearLabel = New System.Windows.Forms.Label()
         Me.YearComboBox = New System.Windows.Forms.ComboBox()
+        Me.BackButton = New System.Windows.Forms.Button()
         CType(Me.CMPT391DataSetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EnrollData, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -107,11 +108,21 @@ Partial Class enrolled
         Me.YearComboBox.Size = New System.Drawing.Size(121, 21)
         Me.YearComboBox.TabIndex = 7
         '
+        'BackButton
+        '
+        Me.BackButton.Location = New System.Drawing.Point(674, 415)
+        Me.BackButton.Name = "BackButton"
+        Me.BackButton.Size = New System.Drawing.Size(114, 23)
+        Me.BackButton.TabIndex = 18
+        Me.BackButton.Text = "Back to Sign-In"
+        Me.BackButton.UseVisualStyleBackColor = True
+        '
         'enrolled
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.BackButton)
         Me.Controls.Add(Me.YearComboBox)
         Me.Controls.Add(Me.YearLabel)
         Me.Controls.Add(Me.RefreshButton)
@@ -139,4 +150,5 @@ Partial Class enrolled
     Friend WithEvents RefreshButton As Button
     Friend WithEvents YearLabel As Label
     Friend WithEvents YearComboBox As ComboBox
+    Friend WithEvents BackButton As Button
 End Class

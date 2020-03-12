@@ -33,6 +33,7 @@ Partial Class Course_List
         Me.SemesterComboBox = New System.Windows.Forms.ComboBox()
         Me.CourseDataGridView = New System.Windows.Forms.DataGridView()
         Me.SearchButton = New System.Windows.Forms.Button()
+        Me.BackButton = New System.Windows.Forms.Button()
         CType(Me.CourseDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -138,11 +139,21 @@ Partial Class Course_List
         Me.SearchButton.Text = "Search"
         Me.SearchButton.UseVisualStyleBackColor = True
         '
+        'BackButton
+        '
+        Me.BackButton.Location = New System.Drawing.Point(1039, 713)
+        Me.BackButton.Name = "BackButton"
+        Me.BackButton.Size = New System.Drawing.Size(114, 23)
+        Me.BackButton.TabIndex = 17
+        Me.BackButton.Text = "Back to Enrolled"
+        Me.BackButton.UseVisualStyleBackColor = True
+        '
         'Course_List
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1165, 831)
+        Me.ClientSize = New System.Drawing.Size(1165, 748)
+        Me.Controls.Add(Me.BackButton)
         Me.Controls.Add(Me.SearchButton)
         Me.Controls.Add(Me.CourseDataGridView)
         Me.Controls.Add(Me.SemesterComboBox)
@@ -173,4 +184,5 @@ Partial Class Course_List
     Friend WithEvents SemesterComboBox As ComboBox
     Friend WithEvents CourseDataGridView As DataGridView
     Friend WithEvents SearchButton As Button
+    Friend WithEvents BackButton As Button
 End Class
