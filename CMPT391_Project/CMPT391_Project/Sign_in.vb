@@ -6,11 +6,11 @@ Public Class Sign_in
         'wes laptop
         'con_string = "Data Source=LAPTOP-I5S445IL\SQLEXPRESS;Initial Catalog=CMPT391;Integrated Security=True"'
 
-        ' wes desktop
-        'con_string = "Data Source=DESKTOP-IRRDDVT\SQLEXPRESS;Initial Catalog=CMPT391;Integrated Security=True"
+        'wes desktop
+        con_string = "Data Source=DESKTOP-IRRDDVT\SQLEXPRESS;Initial Catalog=CMPT391;Integrated Security=True"
 
         ' nathan desktop
-        con_string = "Data Source=DESKTOP-DBHGK71\SQL2017;Initial Catalog=cmpt391;Integrated Security=True"
+        'con_string = "Data Source=DESKTOP-DBHGK71\SQL2017;Initial Catalog=cmpt391;Integrated Security=True"
         Try
             'declare all the connection variables'
             Dim con As New SqlConnection
