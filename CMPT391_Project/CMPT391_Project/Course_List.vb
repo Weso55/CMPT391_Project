@@ -13,14 +13,36 @@ Public Class Course_List
     Public Sub startup(id As Integer, con_s As String, prevp As enrolled)
         user_id = id
         con_string = con_s
-        con = New SqlConnection(con_string)
         PrevPage = prevp
+        Try
+            'open new connection'
+            con = New SqlConnection(con_string)
+            cmd = New SqlCommand
+            'assign parameters for stored procedure
+            Dim params(0) As SqlParameter
+            params(0) = New SqlParameter("@yr", SqlDbType.Int)
+            params(0).Value = 2020
 
-        adpt = New SqlDataAdapter("Select * from Courses", con) 'only querying 2020 to save time'
-        'fill table with course details'
-        Dim dt As DataTable = New DataTable
-        adpt.Fill(dt)
-        CourseDataGridView.DataSource = dt
+            'Assign variables for connection
+            cmd.Connection = con
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.CommandText = "Course_Startup_Data"
+            cmd.Parameters.AddRange(params)
+
+            adpt = New SqlDataAdapter
+            adpt.SelectCommand = cmd
+
+
+            'adpt = New SqlDataAdapter("Select * from Enrolled where Student_ID=" & user_id & " ", con)
+            'fill table with enrolled details'
+            Dim dt As DataTable = New DataTable
+            adpt.Fill(dt)
+            CourseDataGridView.DataSource = dt
+
+        Catch ex As Exception
+            MsgBox("Error with Filling enrolled data table: " & ex.Message & " ")
+        End Try
+
     End Sub
 
     Private Sub SearchButton_Click(sender As Object, e As EventArgs) Handles SearchButton.Click
