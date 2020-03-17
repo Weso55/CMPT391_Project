@@ -19,28 +19,34 @@ Public Class enrolled
             Console.WriteLine("Invalid user id")
             Exit Sub
         End If
+        Try
+            'open new connection'
+            con = New SqlConnection(con_string)
+            cmd = New SqlCommand
+            'assign parameters for stored procedure
+            Dim params(0) As SqlParameter
+            params(0) = New SqlParameter("@id", SqlDbType.Int)
+            params(0).Value = user_id
 
-        'open new connection'
-        con = New SqlConnection(con_string)
-        'assign parameters for stored procedure
-        Dim params(0) As SqlParameter
-        params(0) = New SqlParameter("@id", SqlDbType.Int)
-        params(0).Value = user_id
+            'Assign variables for connection
+            cmd.Connection = con
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.CommandText = "Enrolled_Startup_Data"
+            cmd.Parameters.AddRange(params)
 
-        'Assign variables for connection
-        cmd.Connection = con
-        cmd.CommandType = CommandType.StoredProcedure
-        cmd.CommandText = "Enrolled_Startup_Data"
-        cmd.Parameters.AddRange(params)
+            adpt = New SqlDataAdapter
+            adpt.SelectCommand = cmd
 
-        adpt = New SqlDataAdapter()
-        adpt.SelectCommand = cmd
 
-        'adpt = New SqlDataAdapter("Select * from Enrolled where Student_ID=" & user_id & " ", con)
-        'fill table with enrolled details'
-        Dim dt As DataTable = New DataTable
-        adpt.Fill(dt)
-        EnrollData.DataSource = dt
+            'adpt = New SqlDataAdapter("Select * from Enrolled where Student_ID=" & user_id & " ", con)
+            'fill table with enrolled details'
+            Dim dt As DataTable = New DataTable
+            adpt.Fill(dt)
+            EnrollData.DataSource = dt
+
+        Catch ex As Exception
+            MsgBox("Error with Filling enrolled data table: " & ex.Message & " ")
+        End Try
     End Sub
 
     Private Sub ViewCourses_Click(sender As Object, e As EventArgs) Handles ViewCourses.Click
