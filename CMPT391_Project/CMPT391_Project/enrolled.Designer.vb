@@ -79,6 +79,8 @@ Partial Class enrolled
         Me.EnrollData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.EnrollData.Location = New System.Drawing.Point(73, 93)
         Me.EnrollData.Name = "EnrollData"
+        Me.EnrollData.ReadOnly = True
+        Me.EnrollData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.EnrollData.Size = New System.Drawing.Size(615, 201)
         Me.EnrollData.TabIndex = 4
         '
