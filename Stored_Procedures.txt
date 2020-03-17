@@ -47,3 +47,51 @@ BEGIN
 	where Year = @yr
 END;
 ---------------------------------------------------------------------------------------------
+CREATE PROCEDURE Course_Filter
+@name varchar(50),
+@sect varchar(50),
+@dept varchar(50),
+@sem varchar(50),
+@yr varchar(50)
+
+AS
+BEGIN
+	if @name = 'null'
+	Begin
+	set @name = '%'
+	END
+
+	if @sect = 'null'
+	Begin
+	set @sect = '%'
+	END
+
+	if @dept = 'null'
+	Begin
+	set @dept = '%'
+	END
+
+	if @sem = 'null'
+	Begin
+	set @sem = '%'
+	END
+
+	if @yr = 'null'
+	Begin
+	set @yr = '%'
+	END
+
+	select * from Courses where Courses.Name like @name and Section_ID like @sect and  Department_ID like @dept and Semester like @sem and Year like @yr
+END;
+---------------------------------------------------------------------------------------------------------------------------------------
+CREATE PROCEDURE Detail_Startup_Data
+@course_id int,
+@sem varchar(50),
+@yr varchar(50),
+@sect varchar(50)
+AS
+BEGIN
+	select * from detail where Class_ID = @course_id and Semester = @sem and Year = @yr and S_ID = @sect
+END;
+--------------------------------------------------------------------------------------------------------------------
+
