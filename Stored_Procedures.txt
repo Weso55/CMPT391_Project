@@ -133,7 +133,7 @@ CREATE PROCEDURE Delete_Student
 @course_id int,
 @sect varchar(50),
 @sem varchar(50),
-@yr varchar(50)
+@yr int
 
 AS
 BEGIN
