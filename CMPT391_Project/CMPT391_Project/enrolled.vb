@@ -107,4 +107,8 @@ Public Class enrolled
         Me.Hide() 'hides formEnrolled'
         PrevPage.Show()
     End Sub
+
+    Private Sub DropButton_Click(sender As Object, e As EventArgs) Handles DropButton.Click
+
+    End Sub
 End Class

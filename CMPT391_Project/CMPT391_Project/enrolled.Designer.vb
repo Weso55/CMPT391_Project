@@ -33,6 +33,7 @@ Partial Class enrolled
         Me.YearLabel = New System.Windows.Forms.Label()
         Me.YearComboBox = New System.Windows.Forms.ComboBox()
         Me.BackButton = New System.Windows.Forms.Button()
+        Me.DropButton = New System.Windows.Forms.Button()
         CType(Me.CMPT391DataSetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EnrollData, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -117,11 +118,21 @@ Partial Class enrolled
         Me.BackButton.Text = "Back to Sign-In"
         Me.BackButton.UseVisualStyleBackColor = True
         '
+        'DropButton
+        '
+        Me.DropButton.Location = New System.Drawing.Point(308, 326)
+        Me.DropButton.Name = "DropButton"
+        Me.DropButton.Size = New System.Drawing.Size(154, 44)
+        Me.DropButton.TabIndex = 19
+        Me.DropButton.Text = "Drop Course"
+        Me.DropButton.UseVisualStyleBackColor = True
+        '
         'enrolled
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.DropButton)
         Me.Controls.Add(Me.BackButton)
         Me.Controls.Add(Me.YearComboBox)
         Me.Controls.Add(Me.YearLabel)
@@ -151,4 +162,5 @@ Partial Class enrolled
     Friend WithEvents YearLabel As Label
     Friend WithEvents YearComboBox As ComboBox
     Friend WithEvents BackButton As Button
+    Friend WithEvents DropButton As Button
 End Class
