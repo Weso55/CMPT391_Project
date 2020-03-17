@@ -46,73 +46,69 @@ Public Class Course_List
     End Sub
 
     Private Sub SearchButton_Click(sender As Object, e As EventArgs) Handles SearchButton.Click
-        Dim where_string As String = ""
-        Dim flag As Integer = 0
 
-        'find out how many options in search have been selected
-        If Not DepartmentComboBox.SelectedIndex = -1 Then
-            flag += 1
-        End If
-        If Not SemesterComboBox.SelectedIndex = -1 Then
-            flag += 1
-        End If
-        If Not SectionTextBox.Text = "" Then
-            flag += 1
-        End If
-        If Not CourseTextBox.Text = "" Then
-            flag += 1
-        End If
+        Try
+            'open new connection'
+            con = New SqlConnection(con_string)
+            cmd = New SqlCommand
+            'assign parameters for stored procedure
+            Dim params(4) As SqlParameter
 
-        'build where string based on selected options
-        If Not DepartmentComboBox.SelectedIndex = -1 Then
-            Dim deptname As String = DepartmentComboBox.Text
-            where_string = where_string & " Department_ID=" & deptname & " "
-            If flag > 1 Then
-                where_string = where_string & "and " & " "
-                flag -= 1
+            params(0) = New SqlParameter("@name", SqlDbType.VarChar)
+            If Not CourseTextBox.Text = "" Then
+                'where_string = where_string & " Name=" & CourseTextBox.Text & " "
+                params(0).Value = CourseTextBox.Text
+            Else
+                params(0).Value = "null"
             End If
-        End If
 
-        If Not SemesterComboBox.SelectedIndex = -1 Then
-            Dim sem As String = SemesterComboBox.Text
-            where_string = where_string & " Semester='" & sem & "' "
-            If flag > 1 Then
-                where_string = where_string & "and" & " "
-                flag -= 1
+            params(1) = New SqlParameter("@sect", SqlDbType.VarChar)
+            If Not SectionTextBox.Text = "" Then
+                params(1).Value = SectionTextBox.Text
+            Else
+                params(1).Value = "null"
             End If
-        End If
 
-        If Not SectionTextBox.Text = "" Then
-            where_string = where_string & " Section_ID=" & SectionTextBox.Text & " "
-            If flag > 1 Then
-                where_string = where_string & "and" & " "
-                flag -= 1
+            params(2) = New SqlParameter("@dept", SqlDbType.VarChar)
+            If Not DepartmentComboBox.SelectedIndex = -1 Then
+                params(2).Value = DepartmentComboBox.Text
+            Else
+                params(2).Value = "null"
             End If
-        End If
 
-        If Not CourseTextBox.Text = "" Then
-            where_string = where_string & " Name=" & CourseTextBox.Text & " "
-            If flag > 1 Then
-                where_string = where_string & "and" & " "
-                flag -= 1
+            params(3) = New SqlParameter("@sem", SqlDbType.VarChar)
+            If Not SemesterComboBox.SelectedIndex = -1 Then
+                params(3).Value = SemesterComboBox.Text
+            Else
+                params(3).Value = "null"
             End If
-        End If
 
-        con = New SqlConnection(con_string)
-        If flag = 0 Then
-            adpt = New SqlDataAdapter("Select * from Courses", con)
-        Else
-            Try
-                adpt = New SqlDataAdapter("Select * from Courses where " + where_string, con)
-            Catch ex As Exception
-                MsgBox("invalid selection: " + ex.Message)
-            End Try
-        End If
-        Dim dt As DataTable = New DataTable
+            params(4) = New SqlParameter("@yr", SqlDbType.VarChar)
+            If Not YearComboBox.SelectedIndex = -1 Then
+                params(4).Value = YearComboBox.Text
+            Else
+                params(4).Value = "null"
+            End If
 
-        'fill table with enrolled details'
-        adpt.Fill(dt)
-        CourseDataGridView.DataSource = dt
+            'Assign variables for connection
+            cmd.Connection = con
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.CommandText = "Course_Filter"
+            cmd.Parameters.AddRange(params)
+
+            adpt = New SqlDataAdapter
+            adpt.SelectCommand = cmd
+
+
+            'fill table with enrolled details'
+            Dim dt As DataTable = New DataTable
+            adpt.Fill(dt)
+            CourseDataGridView.DataSource = dt
+
+        Catch ex As Exception
+            MsgBox("Error with Filling Course data table: " & ex.Message & " ")
+        End Try
+
     End Sub
 
     Private Sub CourseDataGridView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles CourseDataGridView.CellContentClick

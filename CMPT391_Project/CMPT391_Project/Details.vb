@@ -11,6 +11,9 @@ Public Class Details
     Private con_string As String
     Public PrevPage As Form
 
+    Private cmd As SqlCommand
+     Private con As SqlConnection
+
     Public Sub startup(u_id As Integer, c_id As Integer, sem As String, yr As Integer, sec As String, con_s As String, prevp As Course_List)
         user_id = u_id
         course_id = c_id
@@ -22,14 +25,41 @@ Public Class Details
 
         Dim cap As Integer
         Try
-            Dim con As New SqlConnection
-            con.ConnectionString = (con_string)
-            con.Open()
+            Try
+                'open new connection'
+                con = New SqlConnection(con_string)
+                cmd = New SqlCommand
+                'assign parameters for stored procedure
 
-            Dim strsql As String
-            strsql = "select * from detail where Class_ID = '" & course_id & "' and Semester = '" & semester & "' and Year = " & year & " and S_ID = '" & section & "';"
+                Dim params(3) As SqlParameter
+                params(0) = New SqlParameter("@course_id", SqlDbType.Int)
+                params(0).Value = course_id
 
-            Dim cmd As New SqlCommand(strsql, con)
+                params(1) = New SqlParameter("@sem", SqlDbType.VarChar)
+                params(1).Value = semester
+
+                params(2) = New SqlParameter("@yr", SqlDbType.VarChar)
+                params(2).Value = year
+
+                params(3) = New SqlParameter("@sect", SqlDbType.VarChar)
+                params(3).Value = section
+
+                'Assign variables for connection
+                cmd.Connection = con
+                cmd.CommandType = CommandType.StoredProcedure
+                cmd.CommandText = "Detail_Startup_Data"
+                cmd.Parameters.AddRange(params)
+                con.Open()
+
+            Catch ex As Exception
+                MsgBox("Error with Filling enrolled data table: " & ex.Message & " ")
+            End Try
+
+
+            'Dim strsql As String
+            'strsql = "select * from detail where Class_ID = '" & course_id & "' and Semester = '" & semester & "' and Year = " & year & " and S_ID = '" & section & "';"
+
+            'Dim cmd As New SqlCommand(strsql, con)
 
             Dim dr As SqlDataReader
             dr = cmd.ExecuteReader

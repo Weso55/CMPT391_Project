@@ -34,6 +34,8 @@ Partial Class Course_List
         Me.CourseDataGridView = New System.Windows.Forms.DataGridView()
         Me.SearchButton = New System.Windows.Forms.Button()
         Me.BackButton = New System.Windows.Forms.Button()
+        Me.YearComboBox = New System.Windows.Forms.ComboBox()
+        Me.Label6 = New System.Windows.Forms.Label()
         CType(Me.CourseDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -99,7 +101,7 @@ Partial Class Course_List
         'DepartmentComboBox
         '
         Me.DepartmentComboBox.FormattingEnabled = True
-        Me.DepartmentComboBox.Items.AddRange(New Object() {"1", "2"})
+        Me.DepartmentComboBox.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"})
         Me.DepartmentComboBox.Location = New System.Drawing.Point(913, 82)
         Me.DepartmentComboBox.Name = "DepartmentComboBox"
         Me.DepartmentComboBox.Size = New System.Drawing.Size(166, 21)
@@ -148,11 +150,31 @@ Partial Class Course_List
         Me.BackButton.Text = "Back to Enrolled"
         Me.BackButton.UseVisualStyleBackColor = True
         '
+        'YearComboBox
+        '
+        Me.YearComboBox.FormattingEnabled = True
+        Me.YearComboBox.Items.AddRange(New Object() {"2016", "2017", "2018", "2019", "2020"})
+        Me.YearComboBox.Location = New System.Drawing.Point(475, 145)
+        Me.YearComboBox.Name = "YearComboBox"
+        Me.YearComboBox.Size = New System.Drawing.Size(250, 21)
+        Me.YearComboBox.TabIndex = 18
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(475, 130)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(29, 13)
+        Me.Label6.TabIndex = 19
+        Me.Label6.Text = "Year"
+        '
         'Course_List
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1165, 748)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.YearComboBox)
         Me.Controls.Add(Me.BackButton)
         Me.Controls.Add(Me.SearchButton)
         Me.Controls.Add(Me.CourseDataGridView)
@@ -185,4 +207,6 @@ Partial Class Course_List
     Friend WithEvents CourseDataGridView As DataGridView
     Friend WithEvents SearchButton As Button
     Friend WithEvents BackButton As Button
+    Friend WithEvents YearComboBox As ComboBox
+    Friend WithEvents Label6 As Label
 End Class

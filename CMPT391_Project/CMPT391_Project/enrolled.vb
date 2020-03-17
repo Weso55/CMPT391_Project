@@ -37,8 +37,6 @@ Public Class enrolled
             adpt = New SqlDataAdapter
             adpt.SelectCommand = cmd
 
-
-            'adpt = New SqlDataAdapter("Select * from Enrolled where Student_ID=" & user_id & " ", con)
             'fill table with enrolled details'
             Dim dt As DataTable = New DataTable
             adpt.Fill(dt)
