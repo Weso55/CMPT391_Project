@@ -1,0 +1,11 @@
+So you can only run these one at a time like Views. just copy and paste them in sql management studio
+
+CREATE PROCEDURE Sign_in
+@username varchar(50)
+AS
+BEGIN
+    SELECT Name
+    FROM Students
+    Where Student_ID = @username;
+END;
+
