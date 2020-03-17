@@ -128,3 +128,14 @@ BEGIN
 	INSERT INTO Enrolled (Student_ID, Course_ID, Section_ID, Semester, Year) values (@user_id,@course_id,@sect,@sem,@yr); 
 END;
 ------------------------------------------------------------------------------------------------------------------------------------
+CREATE PROCEDURE Delete_Student
+@user_id int,
+@course_id int,
+@sect varchar(50),
+@sem varchar(50),
+@yr varchar(50)
+
+AS
+BEGIN
+	Delete from Enrolled where Student_ID = @user_id and Course_ID = Course_ID and Section_ID = @sect and Semester = @sem and Year = @yr
+END;
