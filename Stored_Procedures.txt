@@ -38,4 +38,12 @@ BEGIN
 	select * from Enrolled where Student_ID = @id and Semester like @sem and Year like @yr
 END;
 ---------------------------------------------------------------------------------------------
-
+CREATE PROCEDURE Course_Startup_Data
+@yr int
+AS
+BEGIN
+    SELECT *
+    FROM Courses
+	where Year = @yr
+END;
+---------------------------------------------------------------------------------------------
