@@ -47,6 +47,7 @@ Public Class Details
 
         End Try
 
+        'Count number of enrolled student in the class using the enrolled table
         Try
             Dim con2 As New SqlConnection
             con2.ConnectionString = (con_string)
@@ -63,7 +64,7 @@ Public Class Details
         Catch ex As Exception
             MsgBox("Error Count Failed: " & ex.Message & " ")
         End Try
-
+        ' 
         Try
             Dim con4 As New SqlConnection
             con4.ConnectionString = (con_string)

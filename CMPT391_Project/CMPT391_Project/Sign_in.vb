@@ -33,15 +33,23 @@ Public Class Sign_in
             'replace with your own connection string'
             con.ConnectionString = con_string
             'open connection and query to see if user exists'
-            con.Open()
+
+
+            'assign parameters for stored procedure
+            Dim params(0) As SqlParameter
+            params(0) = New SqlParameter("@username", SqlDbType.VarChar)
+            params(0).Value = myinteger
+
+            'Assign variables for connection
             cmd.Connection = con
-            cmd.CommandType = CommandType.Text
-            cmd.CommandText = "select Name from Students where Student_ID =" & myinteger & " "
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.CommandText = "Sign_in"
+            cmd.Parameters.AddRange(params)
+            con.Open()
             dr = cmd.ExecuteReader
             'check if query returned a row -> means the user exists'
             If dr.HasRows Then
                 dr.Read()
-
                 MsgBox("Signing in: " + dr("Name"))
                 con.Close()
                 Me.Hide()
