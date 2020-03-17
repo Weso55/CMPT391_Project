@@ -52,7 +52,7 @@ CREATE PROCEDURE Course_Filter
 @sect varchar(50),
 @dept varchar(50),
 @sem varchar(50),
-@yr int
+@yr varchar(50)
 
 AS
 BEGIN
