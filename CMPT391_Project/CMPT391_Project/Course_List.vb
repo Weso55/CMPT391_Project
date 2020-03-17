@@ -40,7 +40,7 @@ Public Class Course_List
             CourseDataGridView.DataSource = dt
 
         Catch ex As Exception
-            MsgBox("Error with Filling enrolled data table: " & ex.Message & " ")
+            MsgBox("Error with Filling Course data table: " & ex.Message & " ")
         End Try
 
     End Sub
