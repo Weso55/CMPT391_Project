@@ -94,4 +94,14 @@ BEGIN
 	select * from detail where Class_ID = @course_id and Semester = @sem and Year = @yr and S_ID = @sect
 END;
 --------------------------------------------------------------------------------------------------------------------
+CREATE PROCEDURE Enrolled_Course_Count
+@course_id int,
+@sem varchar(50),
+@yr varchar(50),
+@sect varchar(50)
+AS
+BEGIN
+	select COUNT(Course_ID) AS num from Enrolled where Course_ID = @course_id and Semester = @sem and Year = @yr and Section_ID = @sect
+END;
+---------------------------------------------------------------------------------------------------------------------
 
