@@ -22,7 +22,21 @@ Public Class enrolled
 
         'open new connection'
         con = New SqlConnection(con_string)
-        adpt = New SqlDataAdapter("Select * from Enrolled where Student_ID=" & user_id & " ", con)
+        'assign parameters for stored procedure
+        Dim params(0) As SqlParameter
+        params(0) = New SqlParameter("@id", SqlDbType.Int)
+        params(0).Value = user_id
+
+        'Assign variables for connection
+        cmd.Connection = con
+        cmd.CommandType = CommandType.StoredProcedure
+        cmd.CommandText = "Enrolled_Startup_Data"
+        cmd.Parameters.AddRange(params)
+
+        adpt = New SqlDataAdapter()
+        adpt.SelectCommand = cmd
+
+        'adpt = New SqlDataAdapter("Select * from Enrolled where Student_ID=" & user_id & " ", con)
         'fill table with enrolled details'
         Dim dt As DataTable = New DataTable
         adpt.Fill(dt)
