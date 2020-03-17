@@ -104,4 +104,16 @@ BEGIN
 	select COUNT(Course_ID) AS num from Enrolled where Course_ID = @course_id and Semester = @sem and Year = @yr and Section_ID = @sect
 END;
 ---------------------------------------------------------------------------------------------------------------------
+CREATE PROCEDURE Detail_Prereq
+@course_id int
+
+AS
+BEGIN
+	SELECT Prereq.prereq_id, isnull(Name, 'None') AS Name
+                       FROM Prereq
+                       LEFT JOIN (SELECT distinct Prereq.Course_id, Name FROM Courses,Prereq WHERE Courses.Course_ID = Prereq.Course_id) AS PR
+                       ON Prereq.prereq_id = PR.Course_id
+                       WHERE Prereq.Course_id =  @course_id
+END;
+-------------------------------------------------------------------------------------------------------------------------------
 
