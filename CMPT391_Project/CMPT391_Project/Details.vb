@@ -107,21 +107,27 @@ Public Class Details
         End Try
         ' 
         Try
-            Dim con4 As New SqlConnection
-            con4.ConnectionString = (con_string)
-            con4.Open()
-            Dim strsql4 As String
-            strsql4 = "SELECT Prereq.prereq_id, isnull(Name, 'None') AS Name
-                       FROM Prereq
-                       LEFT JOIN (SELECT distinct Prereq.Course_id, Name FROM Courses,Prereq WHERE Courses.Course_ID = Prereq.Course_id) AS PR
-                       ON Prereq.prereq_id = PR.Course_id
-                       WHERE Prereq.Course_id = " & course_id & "; "
-            Dim cmd4 As New SqlCommand(strsql4, con4)
-            Dim dr4 As SqlDataReader
-            dr4 = cmd4.ExecuteReader
-            dr4.Read()
-            PrereqLabel.Text = dr4("Name")
-            con4.Close()
+            con = New SqlConnection(con_string)
+            cmd = New SqlCommand
+            'assign parameters for stored procedure
+
+            Dim params(0) As SqlParameter
+            params(0) = New SqlParameter("@course_id", SqlDbType.Int)
+            params(0).Value = course_id
+
+            'Assign variables for connection
+            cmd.Connection = con
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.CommandText = "Detail_Prereq"
+            cmd.Parameters.AddRange(params)
+            con.Open()
+
+            Dim dr As SqlDataReader
+            dr = cmd.ExecuteReader
+            dr.Read()
+            PrereqLabel.Text = dr("Name")
+            con.Close()
+
         Catch ex As Exception
             MsgBox("Error Prereq select Failed: " & ex.Message & " ")
         End Try
@@ -148,7 +154,28 @@ Public Class Details
         command.Transaction = transaction
 
         Try
-            command.CommandText = "INSERT INTO Enrolled (Student_ID, Course_ID, Section_ID, Semester, Year) values (" & user_id & ", " & course_id & ", '" & section & "', '" & semester & "', " & year & "); "
+
+            Dim params(4) As SqlParameter
+
+            params(0) = New SqlParameter("@user_id", SqlDbType.Int)
+            params(0).Value = user_id
+
+            params(1) = New SqlParameter("@course_id", SqlDbType.Int)
+            params(1).Value = course_id
+
+            params(2) = New SqlParameter("@sect", SqlDbType.VarChar)
+            params(2).Value = section
+
+            params(3) = New SqlParameter("@sem", SqlDbType.VarChar)
+            params(3).Value = semester
+
+            params(4) = New SqlParameter("@yr", SqlDbType.VarChar)
+            params(4).Value = year
+
+            'Assign variables for connection
+            command.CommandType = CommandType.StoredProcedure
+            command.CommandText = "Enroll_Student"
+            command.Parameters.AddRange(params)
             command.ExecuteNonQuery()
 
             transaction.Commit()
