@@ -58,49 +58,50 @@ Public Class enrolled
     End Sub
 
     Private Sub RefreshButton_Click(sender As Object, e As EventArgs) Handles RefreshButton.Click
-        Dim where_string As String = ""
-        Dim flag As Integer = 0
-
-        'find out how many options in search have been selected
-        If Not SemComboBox.SelectedIndex = -1 Then
-            flag += 1
-        End If
-        If Not YearComboBox.SelectedIndex = -1 Then
-            flag += 1
-        End If
-
-        'build where string based on selected options
-        If Not SemComboBox.SelectedIndex = -1 Then
-            Dim sem As String = SemComboBox.Text
-            where_string = where_string & " Semester='" & sem & "' "
-            If flag > 1 Then
-                where_string = where_string & "and " & " "
-                flag -= 1
+        Try
+            'open new connection'
+            con = New SqlConnection(con_string)
+            cmd = New SqlCommand
+            'assign parameters for stored procedure
+            Dim params(2) As SqlParameter
+            ' assign id
+            params(0) = New SqlParameter("@id", SqlDbType.Int)
+            params(0).Value = user_id
+            ' assign sem
+            params(1) = New SqlParameter("@sem", SqlDbType.VarChar)
+            ' if combo box not empty then assign value else assign string null
+            If Not SemComboBox.SelectedIndex = -1 Then
+                params(1).Value = SemComboBox.Text
+            Else
+                params(1).Value = "null"
             End If
-        End If
-
-        If Not YearComboBox.SelectedIndex = -1 Then
-            Dim year As String = YearComboBox.Text
-            where_string = where_string & " Year='" & year & "' "
-            If flag > 1 Then
-                where_string = where_string & "and" & " "
-                flag -= 1
+            ' assign year
+            params(2) = New SqlParameter("@yr", SqlDbType.VarChar)
+            If Not YearComboBox.SelectedIndex = -1 Then
+                params(2).Value = YearComboBox.Text
+            Else
+                params(2).Value = "null"
             End If
-        End If
 
-        con = New SqlConnection(con_string)
-        If flag = 0 Then
-            adpt = New SqlDataAdapter("Select * from Enrolled where Student_ID=" & user_id & " ", con)
 
-        Else
-            adpt = New SqlDataAdapter("Select * from Enrolled where Student_ID=" & user_id & "and" & where_string, con)
-        End If
+            'Assign variables for connection
+            cmd.Connection = con
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.CommandText = "Enrolled_Filter"
+            cmd.Parameters.AddRange(params)
 
-        Dim dt As DataTable = New DataTable
+            adpt = New SqlDataAdapter
+            adpt.SelectCommand = cmd
 
-        'fill table with enrolled details'
-        adpt.Fill(dt)
-        EnrollData.DataSource = dt
+
+            'fill table with enrolled details'
+            Dim dt As DataTable = New DataTable
+            adpt.Fill(dt)
+            EnrollData.DataSource = dt
+
+        Catch ex As Exception
+            MsgBox("Error with Filling enrolled data table: " & ex.Message & " ")
+        End Try
 
     End Sub
 
