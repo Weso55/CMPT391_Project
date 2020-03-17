@@ -1,4 +1,4 @@
-So you can only run these one at a time like Views. just copy and paste them in sql management studio
+So you can only run these one at a time like when Creating Views. just copy and paste them in sql management studio
 
 CREATE PROCEDURE Sign_in
 @username varchar(50)
@@ -9,3 +9,11 @@ BEGIN
     Where Student_ID = @username;
 END;
 
+CREATE PROCEDURE Enrolled_Startup_Data
+@id Int
+AS
+BEGIN
+    SELECT *
+    FROM Enrolled
+    Where Student_ID = @id;
+END;
