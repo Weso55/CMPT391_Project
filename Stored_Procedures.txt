@@ -84,4 +84,14 @@ BEGIN
 	select * from Courses where Courses.Name like @name and Section_ID like @sect and  Department_ID like @dept and Semester like @sem and Year like @yr
 END;
 ---------------------------------------------------------------------------------------------------------------------------------------
+CREATE PROCEDURE Detail_Startup_Data
+@course_id int,
+@sem varchar(50),
+@yr varchar(50),
+@sect varchar(50)
+AS
+BEGIN
+	select * from detail where Class_ID = @course_id and Semester = @sem and Year = @yr and S_ID = @sect
+END;
+--------------------------------------------------------------------------------------------------------------------
 
