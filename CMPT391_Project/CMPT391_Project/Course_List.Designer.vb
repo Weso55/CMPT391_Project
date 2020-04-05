@@ -101,7 +101,7 @@ Partial Class Course_List
         'DepartmentComboBox
         '
         Me.DepartmentComboBox.FormattingEnabled = True
-        Me.DepartmentComboBox.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"})
+        Me.DepartmentComboBox.Items.AddRange(New Object() {"Anthropology", "Biological Sciences", "Computer Science", "Economics", "English", "Humanities", "Mathematics", "Physical Sciences", "Political Science", "Psychology", "Sociology"})
         Me.DepartmentComboBox.Location = New System.Drawing.Point(913, 82)
         Me.DepartmentComboBox.Name = "DepartmentComboBox"
         Me.DepartmentComboBox.Size = New System.Drawing.Size(166, 21)

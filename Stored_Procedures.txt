@@ -43,7 +43,7 @@ CREATE PROCEDURE Course_Startup_Data
 AS
 BEGIN
     SELECT *
-    FROM Courses
+    FROM courseview
 	where Year = @yr
 END;
 ---------------------------------------------------------------------------------------------
@@ -81,7 +81,7 @@ BEGIN
 	set @yr = '%'
 	END
 
-	select * from Courses where Courses.Name like @name and Section_ID like @sect and  Department_ID like @dept and Semester like @sem and Year like @yr
+	select * from courseview where Name like '%'+@name+'%' and Section_ID like '%'+@sect+'%' and [Department Name] like '%'+@dept+'%' and Semester like '%'+@sem+'%' and Year like '%'+@yr+'%' order by Course_ID
 END;
 ---------------------------------------------------------------------------------------------------------------------------------------
 CREATE PROCEDURE Detail_Startup_Data
