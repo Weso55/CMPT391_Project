@@ -111,7 +111,7 @@ Partial Class Course_List
         '
         Me.SemesterComboBox.AutoCompleteCustomSource.AddRange(New String() {"Fall", "Summer", "Winter", "Spring"})
         Me.SemesterComboBox.FormattingEnabled = True
-        Me.SemesterComboBox.Items.AddRange(New Object() {"Fall", "Winter", "Summer", "Spring"})
+        Me.SemesterComboBox.Items.AddRange(New Object() {"Fall", "Winter", "Spring/Summer"})
         Me.SemesterComboBox.Location = New System.Drawing.Point(913, 147)
         Me.SemesterComboBox.Name = "SemesterComboBox"
         Me.SemesterComboBox.Size = New System.Drawing.Size(166, 21)

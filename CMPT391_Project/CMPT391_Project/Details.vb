@@ -169,26 +169,75 @@ Public Class Details
             params(3) = New SqlParameter("@sem", SqlDbType.VarChar)
             params(3).Value = semester
 
-            params(4) = New SqlParameter("@yr", SqlDbType.VarChar)
+            params(4) = New SqlParameter("@yr", SqlDbType.Int)
             params(4).Value = year
 
+            'checking if already enrolled
+            Dim command2 As New SqlCommand
+            command2 = con3.CreateCommand
+            command2.Connection = con3
+            command2.Transaction = transaction
+            Try
+                command2.CommandType = CommandType.StoredProcedure
+                Dim dr As SqlDataReader
+
+                command2.CommandText = "Check_Enrolled"
+                command2.Parameters.AddRange(params)
+
+                dr = command2.ExecuteReader
+                dr.Read()
+                If (dr.HasRows) Then 'already enrolled
+                    Debug.WriteLine("has rows")
+                    Try
+                        dr.Close()
+                        command2.Parameters.Clear()
+                        transaction.Rollback()
+                        MsgBox("You are already enrolled in this course!")
+                        Exit Sub
+                    Catch ex2 As Exception
+                        MsgBox("Error Rollback Failed: " & ex2.Message & " ")
+                    End Try
+                Else
+                    Debug.WriteLine("has no rows")
+                    dr.Close()
+                    command2.Parameters.Clear()
+                End If
+            Catch ex As Exception
+                MsgBox("Error Enroll Check Failed: " & ex.Message & " ")
+                Try
+                    transaction.Rollback()
+                Catch ex2 As Exception
+                    MsgBox("Error Rollback Failed: " & ex2.Message & " ")
+                End Try
+            End Try
+
+            Debug.WriteLine("end error checking")
+
             'Assign variables for connection
+            Debug.WriteLine("before command type")
             command.CommandType = CommandType.StoredProcedure
+            Debug.WriteLine("before enroll_student")
             command.CommandText = "Enroll_Student"
+            Debug.WriteLine("before add params")
             command.Parameters.AddRange(params)
+            Debug.WriteLine("about to enroll")
             command.ExecuteNonQuery()
+            Debug.WriteLine("after enroll")
+
 
             transaction.Commit()
             Debug.Write("Transaction committed" & Environment.NewLine)
             MsgBox("Enrolled!")
 
         Catch ex As Exception
+            Debug.WriteLine("ex 1")
             MsgBox("Error Enroll Failed: " & ex.Message & " ")
 
             Try
                 transaction.Rollback()
             Catch ex2 As Exception
-                MsgBox("Error Rollback Failed: " & ex.Message & " ")
+                Debug.WriteLine("ex2")
+                MsgBox("Error Rollback Failed: " & ex2.Message & " ")
             End Try
 
         End Try

@@ -121,7 +121,7 @@ CREATE PROCEDURE Enroll_Student
 @course_id int,
 @sect varchar(50),
 @sem varchar(50),
-@yr varchar(50)
+@yr int
 
 AS
 BEGIN
@@ -137,5 +137,17 @@ CREATE PROCEDURE Delete_Student
 
 AS
 BEGIN
-	Delete from Enrolled where Student_ID = @user_id and Course_ID = Course_ID and Section_ID = @sect and Semester = @sem and Year = @yr
+	Delete from Enrolled where Student_ID = @user_id and Course_ID = @course_id and Section_ID = @sect and Semester = @sem and Year = @yr
+END;
+------------------------------------------------------------------------------------------------------------------------------------
+CREATE PROCEDURE Check_Enrolled
+@user_id int,
+@course_id int,
+@sect varchar(50),
+@sem varchar(50),
+@yr int
+
+AS
+BEGIN
+	Select 1 from Enrolled where Student_ID = @user_id and Course_ID = @course_id and Section_ID = @sect and Semester = @sem and Year = @yr
 END;
