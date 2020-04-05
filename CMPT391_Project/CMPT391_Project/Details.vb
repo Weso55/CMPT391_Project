@@ -10,6 +10,7 @@ Public Class Details
     Private section As String
     Private con_string As String
     Public PrevPage As Form
+    Private cap As Integer
 
     Private cmd As SqlCommand
      Private con As SqlConnection
@@ -23,7 +24,7 @@ Public Class Details
         con_string = con_s
         PrevPage = prevp
 
-        Dim cap As Integer
+        'Dim cap As Integer
         Try
             'open new connection'
             con = New SqlConnection(con_string)
@@ -187,7 +188,7 @@ Public Class Details
                 dr = command2.ExecuteReader
                 dr.Read()
                 If (dr.HasRows) Then 'already enrolled
-                    Debug.WriteLine("has rows")
+                    'Debug.WriteLine("has rows")
                     Try
                         dr.Close()
                         command2.Parameters.Clear()
@@ -198,9 +199,10 @@ Public Class Details
                         MsgBox("Error Rollback Failed: " & ex2.Message & " ")
                     End Try
                 Else
-                    Debug.WriteLine("has no rows")
+                    'Debug.WriteLine("has no rows")
                     dr.Close()
                     command2.Parameters.Clear()
+                    'Debug.WriteLine("end check_enrolled")
                 End If
             Catch ex As Exception
                 MsgBox("Error Enroll Check Failed: " & ex.Message & " ")
@@ -211,32 +213,83 @@ Public Class Details
                 End Try
             End Try
 
-            Debug.WriteLine("end error checking")
+            'checking if course is full
+            Dim command3 As New SqlCommand
+            command3 = con3.CreateCommand
+            command3.Connection = con3
+            command3.Transaction = transaction
+            Try
+                command3.CommandType = CommandType.StoredProcedure
+                Dim dr2 As SqlDataReader
+
+                Dim params2(3) As SqlParameter
+                params2(0) = New SqlParameter("@course_id", SqlDbType.Int)
+                params2(0).Value = course_id
+                params2(1) = New SqlParameter("@sem", SqlDbType.VarChar)
+                params2(1).Value = semester
+                params2(2) = New SqlParameter("@yr", SqlDbType.VarChar)
+                params2(2).Value = year
+                params2(3) = New SqlParameter("@sect", SqlDbType.VarChar)
+                params2(3).Value = section
+
+                command3.CommandText = "Enrolled_Course_Count"
+                'Debug.WriteLine("before add params to enrolled course count")
+                command3.Parameters.AddRange(params2)
+
+                dr2 = command3.ExecuteReader
+                dr2.Read()
+                'Debug.WriteLine("cap = " & cap)
+                If (dr2("num") = cap) Then 'course is full
+                    'Debug.WriteLine("is full")
+                    Try
+                        dr2.Close()
+                        command3.Parameters.Clear()
+                        transaction.Rollback()
+                        MsgBox("Course is full!")
+                        Exit Sub
+                    Catch ex2 As Exception
+                        MsgBox("Error Rollback Failed: " & ex2.Message & " ")
+                    End Try
+                Else
+                    'Debug.WriteLine("is not full")
+                    dr2.Close()
+                    command3.Parameters.Clear()
+                End If
+            Catch ex As Exception
+                MsgBox("Error Capacity Check Failed: " & ex.Message & " ")
+                Try
+                    transaction.Rollback()
+                Catch ex2 As Exception
+                    MsgBox("Error Rollback Failed: " & ex2.Message & " ")
+                End Try
+            End Try
+
+            'Debug.WriteLine("end error checking")
 
             'Assign variables for connection
-            Debug.WriteLine("before command type")
+            'Debug.WriteLine("before command type")
             command.CommandType = CommandType.StoredProcedure
-            Debug.WriteLine("before enroll_student")
+            'Debug.WriteLine("before enroll_student")
             command.CommandText = "Enroll_Student"
-            Debug.WriteLine("before add params")
+            'Debug.WriteLine("before add params")
             command.Parameters.AddRange(params)
-            Debug.WriteLine("about to enroll")
+            'Debug.WriteLine("about to enroll")
             command.ExecuteNonQuery()
-            Debug.WriteLine("after enroll")
+            'Debug.WriteLine("after enroll")
 
 
             transaction.Commit()
-            Debug.Write("Transaction committed" & Environment.NewLine)
-            MsgBox("Enrolled!")
+            Debug.WriteLine("Transaction committed")
+            MsgBox("Successfully enrolled!")
 
         Catch ex As Exception
-            Debug.WriteLine("ex 1")
+            'Debug.WriteLine("ex 1")
             MsgBox("Error Enroll Failed: " & ex.Message & " ")
 
             Try
                 transaction.Rollback()
             Catch ex2 As Exception
-                Debug.WriteLine("ex2")
+                'Debug.WriteLine("ex2")
                 MsgBox("Error Rollback Failed: " & ex2.Message & " ")
             End Try
 
