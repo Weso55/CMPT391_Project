@@ -1,0 +1,189 @@
+CREATE TABLE [Courses] (
+  [Course_ID] INT,
+  [Department] VARCHAR(255),
+  [Faculty] VARCHAR(255),
+  [Name] VARCHAR(255),
+  PRIMARY KEY ([Course_ID])
+);
+
+CREATE INDEX [Key] ON  [Courses] ([Department], [Faculty]);
+
+CREATE TABLE [Instructors] (
+  [Instructor_ID] INT,
+  [Department] VARCHAR(255),
+  [Faculty] VARCHAR(255),
+  [Name] VARCHAR(255),
+  PRIMARY KEY ([Instructor_ID])
+);
+
+CREATE TABLE [Date] (
+  [Date_ID] INT,
+  [Semester] VARCHAR(255),
+  [Year] INT,
+  PRIMARY KEY ([Date_ID])
+);
+
+CREATE INDEX [Key] ON  [Date] ([Year]);
+
+CREATE TABLE [History] (
+  [Instructor_ID] INT,
+  [Course_ID] INT,
+  [Date_ID] INT
+);
+
+CREATE INDEX [FK] ON  [History] ([Instructor_ID], [Course_ID], [Date_ID]);
+---------------------------------------------------------------------------------
+CREATE PROCEDURE Course_Total
+@I_ID varchar(255),
+@faculty varchar(255),
+@department varchar(255),
+@semester varchar(255),
+@year varchar(255)
+
+AS
+BEGIN
+	if @I_ID = 'null'
+	Begin
+	set @I_ID = '%'
+	END
+
+	if @faculty = 'null'
+	Begin
+	set @faculty = '%'
+	END
+
+	if @department = 'null'
+	Begin
+	set @department = '%'
+	END
+
+	if @semester = 'null'
+	Begin
+	set @semester = '%'
+	END
+
+	if @year = 'null'
+	Begin
+	set @year = '%'
+	END
+
+	select COUNT(Course_ID) as course_total from History where Instructor_ID like '%'+@I_ID+'%' and Course_ID IN (select Course_ID from Courses where Department like '%'+@department+'%' and Faculty like '%'+@faculty+'%') and Date_ID In (select Date_ID from Date where Year like '%'+@year+'%' and Semester like '%'+@semester+'%') 
+END;
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+CREATE PROCEDURE Course_Value
+@I_ID varchar(255),
+@faculty varchar(255),
+@department varchar(255),
+@semester varchar(255),
+@year varchar(255)
+
+AS
+BEGIN
+	if @I_ID = 'null'
+	Begin
+	set @I_ID = '%'
+	END
+
+	if @faculty = 'null'
+	Begin
+	set @faculty = '%'
+	END
+
+	if @department = 'null'
+	Begin
+	set @department = '%'
+	END
+
+	if @semester = 'null'
+	Begin
+	set @semester = '%'
+	END
+
+	if @year = 'null'
+	Begin
+	set @year = '%'
+	END
+
+	select * from History where Instructor_ID like '%'+@I_ID+'%' and Course_ID IN (select Course_ID from Courses where Department like '%'+@department+'%' and Faculty like '%'+@faculty+'%') and Date_ID In (select Date_ID from Date where Year like '%'+@year+'%' and Semester like '%'+@semester+'%') 
+END;
+
+---------------------------------------------------------------------------------
+
+Insert into Courses Values (1,'Department of Plant Science','Faculty of Agriculture and Food Sciences','BCM-1903 Biochemistry and Metabolism')
+Insert into Courses Values (2,'Department of Plant Science','Faculty of Agriculture and Food Sciences','PLG-1001: Sustainable Crop Production')
+Insert into Courses Values (3,'Department of Plant Science','Faculty of Agriculture and Food Sciences','PLG-1002: Anatomy and plant morphology')
+Insert into Courses Values (4,'Department of Plant Science','Faculty of Agriculture and Food Sciences','SAN-1003: Sustainable Livestock Production')
+Insert into Courses Values (5,'Department of Plant Science','Faculty of Agriculture and Food Sciences','SLS-1000: Soil Science')
+
+Insert into Courses Values (6,'Department of Animal Science','Faculty of Agriculture and Food Sciences','SAN 2202: Reproductive Physiology')
+Insert into Courses Values (7,'Department of Animal Science','Faculty of Agriculture and Food Sciences','SAN-2201: Behaviour and Animal Welfare')
+Insert into Courses Values (8,'Department of Animal Science','Faculty of Agriculture and Food Sciences','SAN-3201: Beef production')
+Insert into Courses Values (9,'Department of Animal Science','Faculty of Agriculture and Food Sciences','SAN-3203: Poultry production')
+Insert into Courses Values (10,'Department of Animal Science','Faculty of Agriculture and Food Sciences','SAN-3204: Swine Production')
+
+Insert into Courses Values (11,'Department of Geography','Faculty of Forestry, Geography and Geomatics','GGR-1002 Human Geography: Human Settlements')
+Insert into Courses Values (12,'Department of Geography','Faculty of Forestry, Geography and Geomatics','GGR-1003 Dynamics of the Earth’s surface')
+Insert into Courses Values (13,'Department of Geography','Faculty of Forestry, Geography and Geomatics','GGR-1004 Introduction to Geographic Sciences')
+Insert into Courses Values (14,'Department of Geography','Faculty of Forestry, Geography and Geomatics','GGR-1000 Introduction to the world map')
+Insert into Courses Values (15,'Department of Geography','Faculty of Forestry, Geography and Geomatics','GGR-1005 Human Geography: population, environment, development')
+
+Insert into Courses Values (16,'Department of Sciences and Forestry','Faculty of Forestry, Geography and Geomatics','PHY-1910: Wood Physics')
+Insert into Courses Values (17,'Department of Sciences and Forestry','Faculty of Forestry, Geography and Geomatics','OLS-4000: Anatomy and wood structure ')
+Insert into Courses Values (18,'Department of Sciences and Forestry','Faculty of Forestry, Geography and Geomatics','CHM-1900: Physical chemistry applied to wood')
+Insert into Courses Values (19,'Department of Sciences and Forestry','Faculty of Forestry, Geography and Geomatics','GMC-1000: Design for Engineers')
+Insert into Courses Values (20,'Department of Sciences and Forestry','Faculty of Forestry, Geography and Geomatics','OLS-2010: Wood Mechanics')
+
+Insert into Courses Values (21,'Department of Physical Education','Faculty of Educational Sciences','EPS – Physical Education')
+Insert into Courses Values (22,'Department of Physical Education','Faculty of Educational Sciences','EPS1303 human development in physical education and sports')
+Insert into Courses Values (23,'Department of Physical Education','Faculty of Educational Sciences','EPS1306 educational intervention in physical education and sports')
+Insert into Courses Values (24,'Department of Physical Education','Faculty of Educational Sciences','EPS1510 teaching internship in physical education and health in high school')
+
+Insert into Courses Values (25,'Department of Anthropology','Faculty of Social Sciences','ANT-1000: Introduction to Anthropology')
+Insert into Courses Values (26,'Department of Anthropology','Faculty of Social Sciences','ANT-1001: History and theories of anthropology I')
+Insert into Courses Values (27,'Department of Anthropology','Faculty of Social Sciences','ANT-1002: Survey Methodology and Ethnography')
+Insert into Courses Values (28,'Department of Anthropology','Faculty of Social Sciences','ANT-2000: Theories of Culture ')
+
+----------------------------------------------------------------------------------------------------------------------------------
+Insert into Courses Values (1,'Department of Plant Science','Faculty of Agriculture and Food Sciences','John')
+Insert into Courses Values (2,'Department of Animal Science','Faculty of Agriculture and Food Sciences','Bob')
+Insert into Courses Values (3,'Department of Geography','Faculty of Forestry, Geography and Geomatics','Ted')
+Insert into Courses Values (4,'Department of Sciences and Forestry','Faculty of Forestry, Geography and Geomatics','Bam')
+Insert into Courses Values (5,'Department of Physical Education','Faculty of Educational Sciences','Lee')
+Insert into Courses Values (6,'Department of Anthropology','Faculty of Social Sciences','Anthon')
+
+-----------------------------------------------------------------------------------------------------------------------------------
+insert into Date values	(1,'Fall',2020)
+insert into Date values	(2,'Winter',2020)
+insert into Date values	(3,'Spring',2020)
+insert into Date values	(4,'Summer',2020)
+
+insert into Date values	(5,'Fall',2021)
+insert into Date values	(6,'Winter',2021)
+insert into Date values	(7,'Spring',2021)
+insert into Date values	(8,'Summer',2021)
+
+insert into Date values	(9,'Fall',2022)
+insert into Date values	(10,'Winter',2022)
+insert into Date values	(11,'Spring',2022)
+insert into Date values	(12,'Summer',2022)
+
+--------------------------------------------
+
+insert into History values(1,1,1)
+insert into History values(1,2,1)
+insert into History values(1,3,1)
+insert into History values(1,4,2)
+insert into History values(1,5,2)
+
+insert into History values(1,4,3)
+insert into History values(1,2,4)
+
+insert into History values(2,6,5)
+insert into History values(2,7,5)
+insert into History values(2,8,6)
+insert into History values(2,9,6)
+insert into History values(2,10,6)
+
+insert into History values(2,7,7)
+insert into History values(2,8,8)
