@@ -53,7 +53,11 @@ Public Class Form1
             'Assign variables for connection
             cmd.Connection = con
             cmd.CommandType = CommandType.StoredProcedure
-            cmd.CommandText = "Course_Value"
+            If ValueCheckBox.Checked = True Then
+                cmd.CommandText = "Course_Value"
+            Else
+                cmd.CommandText = "Course_Total"
+            End If
             cmd.Parameters.AddRange(params)
 
             adpt = New SqlDataAdapter
