@@ -15,11 +15,11 @@ Public Class Data_Generation
     Private con As New SqlConnection
     Private cmd As New SqlCommand
     ' default numbers
-    Private student_count As Integer = 300
-    Private instructor_count As Integer = 20
-    Private dept_count As Integer = 10
-    Private courses_count As Integer = 40
-    Private enrolled_count As Integer = 100
+    Private ReadOnly student_count As Integer = 300
+    Private ReadOnly instructor_count As Integer = 20
+    Private ReadOnly dept_count As Integer = 10
+    Private ReadOnly courses_count As Integer = 40
+    Private ReadOnly enrolled_count As Integer = 100
     Private prereq_count As Integer = 10
 
 

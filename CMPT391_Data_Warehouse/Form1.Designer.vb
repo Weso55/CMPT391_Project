@@ -22,7 +22,6 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.CreatDataButton = New System.Windows.Forms.Button()
         Me.GoButton = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ComboBox2 = New System.Windows.Forms.ComboBox()
@@ -34,15 +33,6 @@ Partial Class Form1
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'CreatDataButton
-        '
-        Me.CreatDataButton.Location = New System.Drawing.Point(691, 12)
-        Me.CreatDataButton.Name = "CreatDataButton"
-        Me.CreatDataButton.Size = New System.Drawing.Size(97, 27)
-        Me.CreatDataButton.TabIndex = 0
-        Me.CreatDataButton.Text = "Generate_Data"
-        Me.CreatDataButton.UseVisualStyleBackColor = True
         '
         'GoButton
         '
@@ -135,7 +125,6 @@ Partial Class Form1
         Me.Controls.Add(Me.ComboBox2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.GoButton)
-        Me.Controls.Add(Me.CreatDataButton)
         Me.Name = "Form1"
         Me.Text = "Form1"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -143,8 +132,6 @@ Partial Class Form1
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents CreatDataButton As Button
     Friend WithEvents GoButton As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents ComboBox2 As ComboBox
