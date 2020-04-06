@@ -11,7 +11,7 @@ Public Class Details
     Private con_string As String
     Public PrevPage As Form
     Private cap As Integer
-
+    Private class_prereq As String;
     Private cmd As SqlCommand
      Private con As SqlConnection
 
@@ -106,7 +106,8 @@ Public Class Details
         Catch ex As Exception
             MsgBox("Error Count Failed: " & ex.Message & " ")
         End Try
-        ' 
+
+        ' Label the prereq
         Try
             con = New SqlConnection(con_string)
             cmd = New SqlCommand
@@ -126,6 +127,7 @@ Public Class Details
             Dim dr As SqlDataReader
             dr = cmd.ExecuteReader
             dr.Read()
+            class_prereq = dr("Name")
             PrereqLabel.Text = dr("Name")
             con.Close()
 
